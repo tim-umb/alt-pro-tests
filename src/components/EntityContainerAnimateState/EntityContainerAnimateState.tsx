@@ -20,6 +20,8 @@ import { ReactComponent as StarFilled } from 'src/assets/images/_StarFilled.svg'
 import { ReactComponent as StarFilled1 } from 'src/assets/images/_StarFilled.svg';
 import { styled } from '@mui/material/styles';
 import { EntityContainerAnimateStateProps } from 'src/types';
+import { animated, useSpring, easings } from 'react-spring';
+import useEntityContainerAnimateState from 'src/components/EntityContainerAnimateState/useEntityContainerAnimateState';
 
 const StateOpen: any = styled('div')(({ theme }: any) => ({
   boxShadow: theme.customShadows['elevation']['4'].boxShadow,
@@ -182,7 +184,9 @@ const RightContent: any = styled('div')({
   margin: `0px`,
 });
 
-const Button1: any = styled(Button)(({ theme }: any) => ({
+const Button1: any = styled(Button, {
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
   margin: `0px`,
   color: theme.palette['primary']['main'],
   fontStyle: theme.typography['Components']['button-small'].fontStyle,
@@ -200,18 +204,23 @@ const DividerHorizontal: any = styled(Divider)(({ theme }: any) => ({
   margin: `0px`,
 }));
 
-const ProfileContent: any = styled('div')(({ theme }: any) => ({
-  backgroundColor: theme.palette['background']['default'],
-  display: `flex`,
-  position: `relative`,
-  isolation: `isolate`,
-  flexDirection: `column`,
-  justifyContent: `flex-start`,
-  alignItems: `center`,
-  alignSelf: `stretch`,
-  height: `646px`,
-  margin: `0px`,
-}));
+const ProfileContent: any = animated(
+  styled('div', {
+    shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+  })(({ theme, data }: any) => ({
+    backgroundColor: theme.palette['background']['default'],
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `column`,
+    justifyContent: `flex-start`,
+    alignItems: `center`,
+    alignSelf: `stretch`,
+    height: `646px`,
+    margin: `0px`,
+    borderRadius: 'unset',
+  }))
+);
 
 const FormContainer: any = styled('div')(({ theme }: any) => ({
   backgroundColor: theme.palette['colors']['grey']['100'],
@@ -379,7 +388,9 @@ const RightContent1: any = styled('div')({
   margin: `0px`,
 });
 
-const Button2: any = styled(Button)(({ theme }: any) => ({
+const Button2: any = styled(Button, {
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
   margin: `0px`,
   color: theme.palette['primary']['main'],
   fontStyle: theme.typography['Components']['button-small'].fontStyle,
@@ -409,21 +420,25 @@ const FormContent: any = styled('div')({
   margin: `0px`,
 });
 
-const InvestorContainer: any = styled('div')(({ theme }: any) => ({
-  backgroundColor: theme.palette['colors']['grey']['100'],
-  display: `flex`,
-  position: `absolute`,
-  isolation: `isolate`,
-  flexDirection: `row`,
-  justifyContent: `flex-start`,
-  alignItems: `flex-start`,
-  padding: `0px`,
-  boxSizing: `border-box`,
-  width: `500px`,
-  height: `709px`,
-  left: `900px`,
-  top: `0px`,
-}));
+const InvestorContainer: any = animated(
+  styled('div', {
+    shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+  })(({ theme, data }: any) => ({
+    backgroundColor: theme.palette['colors']['grey']['100'],
+    display: `flex`,
+    position: `absolute`,
+    isolation: `isolate`,
+    flexDirection: `row`,
+    justifyContent: `flex-start`,
+    alignItems: `flex-start`,
+    padding: `0px`,
+    boxSizing: `border-box`,
+    width: `500px`,
+    height: `709px`,
+    left: `900px`,
+    top: `0px`,
+  }))
+);
 
 const DividerVertical1: any = styled(Divider)(({ theme }: any) => ({
   height: `709px`,
@@ -546,7 +561,9 @@ const RightContent2: any = styled('div')({
   margin: `0px`,
 });
 
-const Button3: any = styled(Button)(({ theme }: any) => ({
+const Button3: any = styled(Button, {
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
   margin: `0px`,
   color: theme.palette['primary']['main'],
   fontStyle: theme.typography['Components']['button-small'].fontStyle,
@@ -578,7 +595,9 @@ const InvestorContent: any = styled('div')({
   margin: `0px`,
 });
 
-const Button4: any = styled(Button)(({ theme }: any) => ({
+const Button4: any = styled(Button, {
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
   margin: `0px`,
   color: theme.palette['primary']['contrast'],
   fontStyle: theme.typography['Components']['button-medium'].fontStyle,
@@ -595,6 +614,67 @@ const Button4: any = styled(Button)(({ theme }: any) => ({
 function EntityContainerAnimateState(
   props: EntityContainerAnimateStateProps
 ): JSX.Element {
+  const { data, fns } = useEntityContainerAnimateState();
+
+  const ProfileContentStateopen = { borderRadius: 'unset' };
+  const ProfileContentStateclose = { borderRadius: `0px 0px 0px 6px` };
+  const [ProfileContentStateStyles, ProfileContentStateApi] = useSpring(() => ({
+    from: eval('ProfileContent' + data.currentVariant),
+    config: { duration: 1000 },
+    delay: 500,
+  }));
+
+  const InvestorContainerStateopen = { width: `500px`, left: `900px` };
+  const InvestorContainerStateclose = { width: `1000px`, left: `400px` };
+  const [InvestorContainerStateStyles, InvestorContainerStateApi] = useSpring(
+    () => ({
+      from: eval('InvestorContainer' + data.currentVariant),
+      config: { duration: 1000 },
+      delay: 500,
+    })
+  );
+
+  const switchStateToStateopen: (
+    duration: number,
+    delay: number,
+    easing: string
+  ) => void = (
+    duration: number = 0,
+    delay: number = 0,
+    easing: string = 'linear'
+  ) => {
+    ProfileContentStateApi.start({
+      ...ProfileContentStateopen,
+      delay,
+      config: { duration, easing: easings[easing] },
+    });
+    InvestorContainerStateApi.start({
+      ...InvestorContainerStateopen,
+      delay,
+      config: { duration, easing: easings[easing] },
+    });
+  };
+
+  const switchStateToStateclose: (
+    duration: number,
+    delay: number,
+    easing: string
+  ) => void = (
+    duration: number = 0,
+    delay: number = 0,
+    easing: string = 'linear'
+  ) => {
+    ProfileContentStateApi.start({
+      ...ProfileContentStateclose,
+      delay,
+      config: { duration, easing: easings[easing] },
+    });
+    InvestorContainerStateApi.start({
+      ...InvestorContainerStateclose,
+      delay,
+      config: { duration, easing: easings[easing] },
+    });
+  };
   return (
     <StateOpen className={props.className}>
       <Content>
@@ -617,6 +697,7 @@ function EntityContainerAnimateState(
                     color={'primary'}
                     disabled={false}
                     variant={'text'}
+                    data={data}
                   >
                     {'Edit'}
                   </Button1>
@@ -624,7 +705,10 @@ function EntityContainerAnimateState(
               </Frame3>
               <DividerHorizontal orientation="horizontal" />
             </ContainerHeader>
-            <ProfileContent></ProfileContent>
+            <ProfileContent
+              data={data}
+              style={{ ...ProfileContentStateStyles }}
+            ></ProfileContent>
           </Body>
         </ProfileContainer>
         <FormContainer>
@@ -634,7 +718,12 @@ function EntityContainerAnimateState(
               <Frame31>
                 <LeftContent1>
                   <Icon2>
-                    <CloseOutlined>
+                    <CloseOutlined
+                      onClick={() => {
+                        switchStateToStateclose(250, 0, 'easeOutSine');
+                        fns.setCurrentVariant('Stateclose');
+                      }}
+                    >
                       <Vector src={VectorImage} loading="lazy" alt={'Vector'} />
                     </CloseOutlined>
                   </Icon2>
@@ -650,6 +739,7 @@ function EntityContainerAnimateState(
                       color={'primary'}
                       disabled={false}
                       variant={'text'}
+                      data={data}
                     >
                       {'Button'}
                     </Button2>
@@ -661,7 +751,10 @@ function EntityContainerAnimateState(
             <FormContent></FormContent>
           </Body1>
         </FormContainer>
-        <InvestorContainer>
+        <InvestorContainer
+          data={data}
+          style={{ ...InvestorContainerStateStyles }}
+        >
           <DividerVertical1 orientation="vertical" />
           <Body2>
             <ContainerHeader2>
@@ -682,6 +775,7 @@ function EntityContainerAnimateState(
                       color={'primary'}
                       disabled={false}
                       variant={'text'}
+                      data={data}
                     >
                       {'Button'}
                     </Button3>
@@ -702,6 +796,7 @@ function EntityContainerAnimateState(
                     htmlColor={`rgba(255, 255, 255, 1)`}
                   ></SvgIcon>
                 }
+                data={data}
               >
                 {'Add Individual'}
               </Button4>
