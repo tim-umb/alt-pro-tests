@@ -13,10 +13,12 @@
  *
  **********************************************************************/
 
-export interface EntityFormProps {
+
+export interface EntityContainerAnimateStateProps {
   className?: any;
 }
 
-export interface EntityContainerAnimateStateProps {
+
+export interface EntityFormProps {
   className?: any;
 }
