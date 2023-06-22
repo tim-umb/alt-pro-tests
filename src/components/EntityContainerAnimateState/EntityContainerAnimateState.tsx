@@ -612,6 +612,65 @@ function EntityContainerAnimateState(
 ): JSX.Element {
   const { fns } = useEntityContainerAnimateState();
 
+  const ProfileContentStateopen = { borderRadius: 'unset' };
+  const ProfileContentStateclose = { borderRadius: `0px 0px 0px 6px` };
+  const [ProfileContentStateStyles, ProfileContentStateApi] = useSpring(() => ({
+    from: eval('ProfileContent' + data.currentVariant),
+    config: { duration: 1000 },
+    delay: 500,
+  }));
+
+  const InvestorContainerStateopen = { width: `500px`, left: `900px` };
+  const InvestorContainerStateclose = { width: `1000px`, left: `400px` };
+  const [InvestorContainerStateStyles, InvestorContainerStateApi] = useSpring(
+    () => ({
+      from: eval('InvestorContainer' + data.currentVariant),
+      config: { duration: 1000 },
+      delay: 500,
+    })
+  );
+
+  const switchStateToStateopen: (
+    duration: number,
+    delay: number,
+    easing?: string
+  ) => void = (
+    duration: number = 0,
+    delay: number = 0,
+    easing: string = 'linear'
+  ) => {
+    ProfileContentStateApi.start({
+      ...ProfileContentStateopen,
+      delay,
+      config: { duration, easing: easings[easing] },
+    });
+    InvestorContainerStateApi.start({
+      ...InvestorContainerStateopen,
+      delay,
+      config: { duration, easing: easings[easing] },
+    });
+  };
+
+  const switchStateToStateclose: (
+    duration: number,
+    delay: number,
+    easing: string
+  ) => void = (
+    duration: number = 0,
+    delay: number = 0,
+    easing: string = 'linear'
+  ) => {
+    ProfileContentStateApi.start({
+      ...ProfileContentStateclose,
+      delay,
+      config: { duration, easing: easings[easing] },
+    });
+    InvestorContainerStateApi.start({
+      ...InvestorContainerStateclose,
+      delay,
+      config: { duration, easing: easings[easing] },
+    });
+  };
   return (
     <StateOpen className={props.className}>
       <Content>
