@@ -18,13 +18,14 @@ Please don't modify */
 const variantOptions = { Stateopen: 'Stateopen', Stateclose: 'Stateclose' };
 
 const useEntityContainerAnimateState = () => {
+  const closeEntityForm = (): any => {};
   const [currentVariant, setCurrentVariant] = React.useState<string>(
     variantOptions['Stateopen']
   );
 
   const data: any = { currentVariant };
 
-  const fns: any = { setCurrentVariant };
+  const fns: any = { setCurrentVariant ,closeEntityForm};
 
   return { data, fns };
 };
