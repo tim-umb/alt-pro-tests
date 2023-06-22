@@ -697,10 +697,6 @@ function EntityContainerAnimateState(
                     color={'primary'}
                     disabled={false}
                     variant={'text'}
-                    onClick={() => {
-                      switchStateToStateopen(250, 0, 'easeOutQuart');
-                      fns.setCurrentVariant('Stateopen');
-                    }}
                     data={data}
                   >
                     {'Edit'}

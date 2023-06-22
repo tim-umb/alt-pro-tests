@@ -17,9 +17,11 @@
 
 
 
+
 export interface EntityContainerAnimateStateProps {
   className?: any;
 }
+
 
 
 
