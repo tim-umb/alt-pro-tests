@@ -13,18 +13,22 @@
  *
  **********************************************************************/
 
+
+export interface EntityContainerAnimateStateProps {
+  className?: any;
+}
+
+
 export interface EntityContainerProps {
   className?: any;
 }
+
 
 export interface InfoTableProps {
   className?: any;
 }
 
-export interface EntityFormProps {
-  className?: any;
-}
 
-export interface EntityContainerAnimateStateProps {
+export interface EntityFormProps {
   className?: any;
 }

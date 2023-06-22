@@ -23,7 +23,8 @@ import { EntityContainerAnimateStateProps } from 'src/types';
 import { animated, useSpring, easings } from 'react-spring';
 import useEntityContainerAnimateState from 'src/components/EntityContainerAnimateState/useEntityContainerAnimateState';
 
-const StateOpen: any = styled('div')({
+const StateOpen: any = styled('div')(({ theme }: any) => ({
+  boxShadow: theme.customShadows['elevation']['4'].boxShadow,
   borderRadius: `6px`,
   display: `flex`,
   position: `relative`,
@@ -36,7 +37,7 @@ const StateOpen: any = styled('div')({
   padding: `0px`,
   boxSizing: `border-box`,
   overflow: `hidden`,
-});
+}));
 
 const Content: any = styled('div')({
   display: `flex`,
@@ -696,6 +697,10 @@ function EntityContainerAnimateState(
                     color={'primary'}
                     disabled={false}
                     variant={'text'}
+                    onClick={() => {
+                      switchStateToStateopen(250, 0, 'easeOutSine');
+                      fns.setCurrentVariant('Stateopen');
+                    }}
                     data={data}
                   >
                     {'Edit'}
@@ -710,52 +715,46 @@ function EntityContainerAnimateState(
             ></ProfileContent>
           </Body>
         </ProfileContainer>
-        {!(data.currentVariant === 'Stateclose') && (
-          <FormContainer>
-            <DividerVertical orientation="vertical" />
-            <Body1>
-              <ContainerHeader1>
-                <Frame31>
-                  <LeftContent1>
-                    <Icon2
-                      onClick={() => {
-                        switchStateToStateclose(250, 0, 'easeOutSine');
-                        fns.setCurrentVariant('Stateclose');
-                      }}
+        <FormContainer>
+          <DividerVertical orientation="vertical" />
+          <Body1>
+            <ContainerHeader1>
+              <Frame31>
+                <LeftContent1>
+                  <Icon2
+                    onClick={() => {
+                      switchStateToStateclose(250, 0, 'easeOutSine');
+                      fns.setCurrentVariant('Stateclose');
+                    }}
+                  >
+                    <CloseOutlined>
+                      <Vector src={VectorImage} loading="lazy" alt={'Vector'} />
+                    </CloseOutlined>
+                  </Icon2>
+                </LeftContent1>
+                <Content2>
+                  <Title1>{`Add Entity`}</Title1>
+                  {false && <Subheader1>{`{Subheader}`}</Subheader1>}
+                </Content2>
+                {false && (
+                  <RightContent1>
+                    <Button2
+                      size={'small'}
+                      color={'primary'}
+                      disabled={false}
+                      variant={'text'}
+                      data={data}
                     >
-                      <CloseOutlined>
-                        <Vector
-                          src={VectorImage}
-                          loading="lazy"
-                          alt={'Vector'}
-                        />
-                      </CloseOutlined>
-                    </Icon2>
-                  </LeftContent1>
-                  <Content2>
-                    <Title1>{`Add Entity`}</Title1>
-                    {false && <Subheader1>{`{Subheader}`}</Subheader1>}
-                  </Content2>
-                  {false && (
-                    <RightContent1>
-                      <Button2
-                        size={'small'}
-                        color={'primary'}
-                        disabled={false}
-                        variant={'text'}
-                        data={data}
-                      >
-                        {'Button'}
-                      </Button2>
-                    </RightContent1>
-                  )}
-                </Frame31>
-                {false && <DividerHorizontal1 orientation="horizontal" />}
-              </ContainerHeader1>
-              <FormContent></FormContent>
-            </Body1>
-          </FormContainer>
-        )}
+                      {'Button'}
+                    </Button2>
+                  </RightContent1>
+                )}
+              </Frame31>
+              {false && <DividerHorizontal1 orientation="horizontal" />}
+            </ContainerHeader1>
+            <FormContent></FormContent>
+          </Body1>
+        </FormContainer>
         <InvestorContainer
           data={data}
           style={{ ...InvestorContainerStateStyles }}
