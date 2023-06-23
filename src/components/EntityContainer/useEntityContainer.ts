@@ -14,6 +14,7 @@
 import React, { useState } from 'react';
 
 const useEntityContainer = () => {
+  const toggleEdit = (): any => {};
   const toggleClose = (): any => {};
   const [isEdit, setIsEdit] = useState(false);
 
