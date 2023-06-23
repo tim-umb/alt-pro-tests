@@ -17,6 +17,7 @@ import { Button, Divider } from '@mui/material';
 import VectorImage from 'src/assets/images/EntityContainer_Vector_2.png';
 import { styled } from '@mui/material/styles';
 import { EntityContainerProps } from 'src/types';
+import useEntityContainer from 'src/components/EntityContainer/useEntityContainer';
 
 const StateOpen: any = styled('div')(({ theme }: any) => ({
   boxShadow: theme.customShadows['elevation']['4'].boxShadow,
@@ -145,7 +146,9 @@ const RightContent: any = styled('div')({
   margin: `0px`,
 });
 
-const Button1: any = styled(Button)(({ theme }: any) => ({
+const Button1: any = styled(Button, {
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
   margin: `0px`,
   color: theme.palette['primary']['main'],
   fontStyle: theme.typography['Components']['button-small'].fontStyle,
@@ -325,7 +328,9 @@ const FormContent: any = styled('div')({
   margin: `0px`,
 });
 
-const InvestorContainer: any = styled('div')(({ theme }: any) => ({
+const InvestorContainer: any = styled('div', {
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
   backgroundColor: theme.palette['colors']['grey']['100'],
   display: `flex`,
   position: `absolute`,
@@ -335,9 +340,9 @@ const InvestorContainer: any = styled('div')(({ theme }: any) => ({
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  width: `500px`,
+  width: data.isClose ? `999px` : `500px`,
   height: `709px`,
-  left: `900px`,
+  left: data.isClose ? `401px` : `900px`,
   top: `0px`,
 }));
 
@@ -435,7 +440,9 @@ const InvestorContent: any = styled('div')({
   margin: `0px`,
 });
 
-const Button2: any = styled(Button)(({ theme }: any) => ({
+const Button2: any = styled(Button, {
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
   margin: `0px`,
   color: theme.palette['primary']['contrast'],
   fontStyle: `normal`,
@@ -449,6 +456,8 @@ const Button2: any = styled(Button)(({ theme }: any) => ({
 }));
 
 function EntityContainer(props: EntityContainerProps): JSX.Element {
+  const { data } = useEntityContainer();
+
   return (
     <StateOpen className={props.className}>
       <Content>
@@ -465,6 +474,7 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                     color={'primary'}
                     disabled={false}
                     variant={'text'}
+                    data={data}
                   >
                     {'Edit'}
                   </Button1>
@@ -495,7 +505,7 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
             <FormContent></FormContent>
           </Body1>
         </FormContainer>
-        <InvestorContainer>
+        <InvestorContainer data={data}>
           <DividerVertical1 orientation="vertical" />
           <Body2>
             <ContainerHeader2>
@@ -512,6 +522,7 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                 color={'primary'}
                 disabled={false}
                 variant={'contained'}
+                data={data}
               >
                 {'Add Individual'}
               </Button2>
