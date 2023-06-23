@@ -456,9 +456,7 @@ const Button2: any = styled(Button, {
 }));
 
 function EntityContainer(props: EntityContainerProps): JSX.Element {
-  const { fns } = useEntityContainer();
-
-  console.log('EntityContainer', props);
+  const { fns } = useEntityContainer(props);
 
   return (
     <StateOpen className={props.className}>

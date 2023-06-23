@@ -14,9 +14,11 @@
  **********************************************************************/
 
 
+
 export interface EntityContainerProps {
   className?: any;
   data: any;
   toggleIsClose: any;
+  data.isClose: any;
 }
 
