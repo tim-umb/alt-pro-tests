@@ -15,12 +15,12 @@ import React, { useState } from 'react';
 
 const useEntityContainer = () => {
   const toggleClose = (): any => {};
-  const [isClose, setIsClose] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
 
-  const data: any = { isClose };
+  const data: any = { isEdit };
 
   const fns: any = {
-    toggleClose: () => setIsClose(!isClose)
+    toggleClose: () => setIsEdit(!isEdit)
   };
 
   return { data, fns };

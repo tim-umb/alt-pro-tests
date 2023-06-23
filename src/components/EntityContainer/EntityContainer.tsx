@@ -475,7 +475,7 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                     disabled={false}
                     variant={'text'}
                     onClick={fns.toggleClose}
-                    data={data}
+                    fns={fns}
                   >
                     {'Edit'}
                   </Button1>
