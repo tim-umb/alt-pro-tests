@@ -147,8 +147,8 @@ const RightContent: any = styled('div')({
 });
 
 const Button1: any = styled(Button, {
-  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
-})(({ theme, data }: any) => ({
+  shouldForwardProp: (prop: any) => !['fns'].includes(prop.toString()),
+})(({ theme, fns }: any) => ({
   margin: `0px`,
   color: theme.palette['primary']['main'],
   fontStyle: theme.typography['Components']['button-small'].fontStyle,
@@ -329,8 +329,8 @@ const FormContent: any = styled('div')({
 });
 
 const InvestorContainer: any = styled('div', {
-  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
-})(({ theme, data }: any) => ({
+  shouldForwardProp: (prop: any) => !['fns'].includes(prop.toString()),
+})(({ theme, fns }: any) => ({
   backgroundColor: theme.palette['colors']['grey']['100'],
   display: `flex`,
   position: `absolute`,
@@ -340,9 +340,9 @@ const InvestorContainer: any = styled('div', {
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  width: data.isClose ? `999px` : `500px`,
+  width: fns.toggleIsClose ? `999px` : `500px`,
   height: `709px`,
-  left: data.isClose ? `401px` : `900px`,
+  left: fns.toggleIsClose ? `401px` : `900px`,
   top: `0px`,
 }));
 
@@ -441,8 +441,8 @@ const InvestorContent: any = styled('div')({
 });
 
 const Button2: any = styled(Button, {
-  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
-})(({ theme, data }: any) => ({
+  shouldForwardProp: (prop: any) => !['fns'].includes(prop.toString()),
+})(({ theme, fns }: any) => ({
   margin: `0px`,
   color: theme.palette['primary']['contrast'],
   fontStyle: `normal`,
@@ -456,7 +456,7 @@ const Button2: any = styled(Button, {
 }));
 
 function EntityContainer(props: EntityContainerProps): JSX.Element {
-  const { data, fns } = useEntityContainer();
+  const { fns } = useEntityContainer();
 
   return (
     <StateOpen className={props.className}>
@@ -474,7 +474,7 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                     color={'primary'}
                     disabled={false}
                     variant={'text'}
-                    data={data}
+                    fns={fns}
                   >
                     {'Edit'}
                   </Button1>
@@ -505,7 +505,7 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
             <FormContent></FormContent>
           </Body1>
         </FormContainer>
-        <InvestorContainer data={data}>
+        <InvestorContainer fns={fns}>
           <DividerVertical1 orientation="vertical" />
           <Body2>
             <ContainerHeader2>
@@ -522,7 +522,7 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                 color={'primary'}
                 disabled={false}
                 variant={'contained'}
-                data={data}
+                fns={fns}
               >
                 {'Add Individual'}
               </Button2>
