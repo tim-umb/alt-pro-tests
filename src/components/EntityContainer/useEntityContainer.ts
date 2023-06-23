@@ -14,9 +14,8 @@
 import React from 'react';
 const useEntityContainer = () => {
   const data: any = {};
-  const toggleIsClose = (): any => {};
 
-  const fns: any = { toggleIsClose };
+  const fns: any = {};
 
   return { data, fns };
 };
