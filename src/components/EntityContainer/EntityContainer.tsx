@@ -12,7 +12,7 @@
  *
  **********************************************************************/
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Divider } from '@mui/material';
 import VectorImage from 'src/assets/images/EntityContainer_Vector_2.png';
 import { styled } from '@mui/material/styles';
@@ -456,7 +456,14 @@ const Button2: any = styled(Button, {
 }));
 
 function EntityContainer(props: EntityContainerProps): JSX.Element {
-  const { data } = useEntityContainer();
+
+  const [data, setData] = useState({ isClose: true });
+
+  const toggleIsClose = () => {
+    setData({ ...data, isClose: !data.isClose });
+  };
+
+  console.log(data);
 
   return (
     <StateOpen className={props.className}>
@@ -475,6 +482,7 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                     disabled={false}
                     variant={'text'}
                     data={data}
+                    onClick={toggleIsClose}
                   >
                     {'Edit'}
                   </Button1>
@@ -492,7 +500,9 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
               <Frame31>
                 <LeftContent>
                   <Icon1>
-                    <CloseOutlined>
+                    <CloseOutlined
+                      onClick={toggleIsClose}
+                      >
                       <Vector src={VectorImage} loading="lazy" alt={'Vector'} />
                     </CloseOutlined>
                   </Icon1>
