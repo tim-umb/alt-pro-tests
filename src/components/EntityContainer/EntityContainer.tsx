@@ -474,6 +474,7 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                     color={'primary'}
                     disabled={false}
                     variant={'text'}
+                    onClick={fns.toggleIsClose}
                     fns={fns}
                   >
                     {'Edit'}
