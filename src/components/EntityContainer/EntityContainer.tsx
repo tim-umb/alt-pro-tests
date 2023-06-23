@@ -51,17 +51,17 @@ const Content: any = styled('div')({
 
 const ProfileContainer: any = styled('div')({
   display: `flex`,
-  position: `absolute`,
+  position: `relative`,
   isolation: `isolate`,
   flexDirection: `column`,
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  width: `400px`,
+  flex: `1`,
   height: `709px`,
-  left: `0px`,
-  top: `0px`,
+  margin: `0px`,
+  maxWidth: '33%',
 });
 
 const Body: any = styled('div')({
@@ -179,20 +179,24 @@ const ProfileContent: any = styled('div')(({ theme }: any) => ({
   margin: `0px`,
 }));
 
-const FormContainer: any = styled('div')(({ theme }: any) => ({
+const FormContainer: any = styled('div', {
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
   backgroundColor: theme.palette['colors']['grey']['100'],
   display: `flex`,
-  position: `absolute`,
+  position: data.isEdit ? `absolute` : `relative`,
   isolation: `isolate`,
   flexDirection: `row`,
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  width: `500px`,
+  flex: data.isEdit ? 'unset' : `1`,
   height: `709px`,
-  left: `400px`,
-  top: `0px`,
+  margin: data.isEdit ? 'unset' : `0px`,
+  width: data.isEdit ? `500px` : 'unset',
+  left: data.isEdit ? `400px` : 'unset',
+  top: data.isEdit ? `0px` : 'unset',
 }));
 
 const DividerVertical: any = styled(Divider)(({ theme }: any) => ({
@@ -329,22 +333,20 @@ const FormContent: any = styled('div')({
   margin: `0px`,
 });
 
-const InvestorContainer: any = styled('div', {
-  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
-})(({ theme, data }: any) => ({
+const InvestorContainer: any = styled('div')(({ theme }: any) => ({
   backgroundColor: theme.palette['colors']['grey']['100'],
   display: `flex`,
-  position: `absolute`,
+  position: `relative`,
   isolation: `isolate`,
   flexDirection: `row`,
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  width: data.isEdit ? `999px` : `500px`,
+  flex: `1`,
   height: `709px`,
-  left: data.isEdit ? `401px` : `900px`,
-  top: `0px`,
+  margin: `0px`,
+  width: '66%',
 }));
 
 const DividerVertical1: any = styled(Divider)(({ theme }: any) => ({
@@ -487,27 +489,33 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
             <ProfileContent></ProfileContent>
           </Body>
         </ProfileContainer>
-        <FormContainer>
-          <DividerVertical orientation="vertical" />
-          <Body1>
-            <ContainerHeader1>
-              <Frame31>
-                <LeftContent>
-                  <Icon1>
-                    <CloseOutlined onClick={fns.toggleEdit}>
-                      <Vector src={VectorImage} loading="lazy" alt={'Vector'} />
-                    </CloseOutlined>
-                  </Icon1>
-                </LeftContent>
-                <Content2>
-                  <Title1>{`Edit Entity`}</Title1>
-                </Content2>
-              </Frame31>
-            </ContainerHeader1>
-            <FormContent></FormContent>
-          </Body1>
-        </FormContainer>
-        <InvestorContainer data={data}>
+        {!data.isEdit && (
+          <FormContainer data={data}>
+            <DividerVertical orientation="vertical" />
+            <Body1>
+              <ContainerHeader1>
+                <Frame31>
+                  <LeftContent>
+                    <Icon1>
+                      <CloseOutlined onClick={fns.toggleEdit}>
+                        <Vector
+                          src={VectorImage}
+                          loading="lazy"
+                          alt={'Vector'}
+                        />
+                      </CloseOutlined>
+                    </Icon1>
+                  </LeftContent>
+                  <Content2>
+                    <Title1>{`Edit Entity`}</Title1>
+                  </Content2>
+                </Frame31>
+              </ContainerHeader1>
+              <FormContent></FormContent>
+            </Body1>
+          </FormContainer>
+        )}
+        <InvestorContainer>
           <DividerVertical1 orientation="vertical" />
           <Body2>
             <ContainerHeader2>
