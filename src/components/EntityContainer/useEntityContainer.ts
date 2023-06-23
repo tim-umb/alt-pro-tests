@@ -11,14 +11,19 @@
  *
  **********************************************************************/
 
-import React from 'react';
+import React, { useState } from 'react';
+
 const useEntityContainer = () => {
-  const toggleIsClose = (): any => {};
-  const data: any = {};
+  const [isClose, setIsClose] = useState(true);
 
-  const fns: any = {toggleIsClose};
+  const toggleIsClose = (): boolean => {
+    setIsClose(!isClose);
+    return isClose;
+  };
 
-  return { data, fns };
+  const fns = { toggleIsClose };
+
+  return { fns };
 };
 
 export default useEntityContainer;
