@@ -11,11 +11,16 @@
  *
  **********************************************************************/
 
-import React from 'react';
-const useEntityContainer = () => {
-  const data: any = {};
+import React, { useState } from 'react';
 
-  const fns: any = {};
+const useEntityContainer = () => {
+  const [isClose, setIsClose] = useState(false);
+
+  const data: any = { isClose };
+
+  const fns: any = {
+    toggleClose: () => setIsClose(!isClose)
+  };
 
   return { data, fns };
 };
