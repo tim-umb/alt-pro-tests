@@ -14,6 +14,7 @@
 import React, { useState } from 'react';
 
 const useEntityContainer = () => {
+  const toggleClose = (): any => {};
   const [isClose, setIsClose] = useState(false);
 
   const data: any = { isClose };

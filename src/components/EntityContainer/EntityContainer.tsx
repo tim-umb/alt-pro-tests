@@ -474,9 +474,8 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                     color={'primary'}
                     disabled={false}
                     variant={'text'}
-                    data={data}
-                    fns={fns}
                     onClick={fns.toggleClose}
+                    data={data}
                   >
                     {'Edit'}
                   </Button1>
@@ -494,7 +493,7 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
               <Frame31>
                 <LeftContent>
                   <Icon1>
-                    <CloseOutlined fns={fns} onClick={fns.toggleClose}>
+                    <CloseOutlined>
                       <Vector src={VectorImage} loading="lazy" alt={'Vector'} />
                     </CloseOutlined>
                   </Icon1>
