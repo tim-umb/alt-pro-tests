@@ -475,12 +475,12 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                   <Button1
                     size={'small'}
                     color={'primary'}
-                    disabled={!data.isEdit}
+                    disabled={false}
                     variant={'text'}
                     onClick={fns.toggleEdit}
                     data={data}
                   >
-                    {fns.editButton}
+                    {data.editButton}
                   </Button1>
                 </RightContent>
               </Frame3>
