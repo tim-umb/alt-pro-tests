@@ -480,7 +480,7 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                     onClick={fns.toggleEdit}
                     data={data}
                   >
-                    {'Edit'}
+                    {fns.editButton}
                   </Button1>
                 </RightContent>
               </Frame3>
