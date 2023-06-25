@@ -14,6 +14,7 @@
 import React, { useState } from 'react';
 
 const useEntityContainer = () => {
+  const toggleEdit = (): any => {};
 
   const editButton = (): any => {};
 
