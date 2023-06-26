@@ -23,13 +23,7 @@ const useEntityContainer = () => {
 
   const [isEdit, setIsEdit] = useState(false);
 
-  const useButtonVariant = (): any => {
-    return (
-      data.isEdit ? 'text' : 'disabled'
-    );
-  };
-
-  const data: any = { isEdit, editButton, useButtonVariant };
+  const data: any = { isEdit, editButton };
 
   const fns: any = {
     toggleEdit: (): any => {setIsEdit(!isEdit)}
