@@ -16,18 +16,21 @@ import React, { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 
 const useEntityContainer = () => {
-  const toggleEdit = (): any => {};
+  const [isEdit, setIsEdit] = useState(false);
+
+  const toggleEdit = (): any => {
+    setIsEdit(prevIsEdit => !prevIsEdit)
+  };
+
   const editButton = (): any => {
     return 'Edit';
   };
 
-  const [isEdit, setIsEdit] = useState(false);
-
   const data: any = { isEdit, editButton };
 
   const fns: any = {
-    toggleEdit: (): any => {setIsEdit(!isEdit)}
-  };
+    toggleEdit,
+   };
 
   return { data, fns };
 };
