@@ -13,9 +13,10 @@
  **********************************************************************/
 
 import React from 'react';
-import { Button, Divider } from '@mui/material';
-import VectorImage from 'src/assets/images/EntityContainer_Vector_2.png';
+import { Button, Divider, Avatar, Chip } from '@mui/material';
+import VectorImage from 'src/assets/images/EntityContainer_Vector_5.png';
 import { styled } from '@mui/material/styles';
+import EntityForm from 'src/components/EntityForm/EntityForm';
 import FormTest from 'src/components/FormTest/FormTest';
 import { EntityContainerProps } from 'src/types';
 import useEntityContainer from 'src/components/EntityContainer/useEntityContainer';
@@ -28,7 +29,7 @@ const StateOpen: any = styled('div')(({ theme }: any) => ({
   isolation: `isolate`,
   flexDirection: `column`,
   height: 'auto',
-  width: '100vw',
+  width: '100%',
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
@@ -174,8 +175,650 @@ const ProfileContent: any = styled('div')(({ theme }: any) => ({
   flexDirection: `column`,
   justifyContent: `flex-start`,
   alignItems: `center`,
+  padding: `24px`,
+  boxSizing: `border-box`,
   alignSelf: `stretch`,
   height: `646px`,
+  margin: `0px`,
+}));
+
+const Typography1: any = styled('div')(({ theme }: any) => ({
+  textAlign: `center`,
+  whiteSpace: `pre-wrap`,
+  fontSynthesis: `none`,
+  color: theme.palette['text']['primary'],
+  fontStyle: theme.typography['Typography']['h3'].fontStyle,
+  fontFamily: theme.typography['Typography']['h3'].fontFamily,
+  fontWeight: theme.typography['Typography']['h3'].fontWeight,
+  fontSize: theme.typography['Typography']['h3'].fontSize,
+  letterSpacing: theme.typography['Typography']['h3'].letterSpacing,
+  lineHeight: theme.typography['Typography']['h3'].lineHeight,
+  textDecoration: theme.typography['Typography']['h3'].textDecoration,
+  textTransform: theme.typography['Typography']['h3'].textTransform,
+  margin: `0px`,
+}));
+
+const Avatar1: any = styled(Avatar, {
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
+  margin: `24px 0px 0px 0px`,
+  color: theme.palette['background']['paper-elevation-0'],
+  fontStyle: theme.typography['Components']['avatar-initials'].fontStyle,
+  fontFamily: theme.typography['Components']['avatar-initials'].fontFamily,
+  fontWeight: theme.typography['Components']['avatar-initials'].fontWeight,
+  fontSize: theme.typography['Components']['avatar-initials'].fontSize,
+  letterSpacing:
+    theme.typography['Components']['avatar-initials'].letterSpacing,
+  lineHeight: theme.typography['Components']['avatar-initials'].lineHeight,
+  textDecoration:
+    theme.typography['Components']['avatar-initials'].textDecoration,
+  textTransform:
+    theme.typography['Components']['avatar-initials'].textTransform,
+}));
+
+const Frame1: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `column`,
+  justifyContent: `flex-start`,
+  alignItems: `center`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  margin: `24px 0px 0px 0px`,
+});
+
+const Typography2: any = styled('div')(({ theme }: any) => ({
+  textAlign: `center`,
+  whiteSpace: `pre-wrap`,
+  fontSynthesis: `none`,
+  color: theme.palette['text']['primary'],
+  fontStyle: theme.typography['Typography']['h6'].fontStyle,
+  fontFamily: theme.typography['Typography']['h6'].fontFamily,
+  fontWeight: theme.typography['Typography']['h6'].fontWeight,
+  fontSize: theme.typography['Typography']['h6'].fontSize,
+  letterSpacing: theme.typography['Typography']['h6'].letterSpacing,
+  lineHeight: theme.typography['Typography']['h6'].lineHeight,
+  textDecoration: theme.typography['Typography']['h6'].textDecoration,
+  textTransform: theme.typography['Typography']['h6'].textTransform,
+  margin: `0px`,
+}));
+
+const Typography3: any = styled('div')(({ theme }: any) => ({
+  textAlign: `center`,
+  whiteSpace: `pre-wrap`,
+  fontSynthesis: `none`,
+  color: theme.palette['text']['secondary'],
+  fontStyle: theme.typography['Typography']['body1'].fontStyle,
+  fontFamily: theme.typography['Typography']['body1'].fontFamily,
+  fontWeight: theme.typography['Typography']['body1'].fontWeight,
+  fontSize: theme.typography['Typography']['body1'].fontSize,
+  letterSpacing: theme.typography['Typography']['body1'].letterSpacing,
+  lineHeight: theme.typography['Typography']['body1'].lineHeight,
+  textDecoration: theme.typography['Typography']['body1'].textDecoration,
+  textTransform: theme.typography['Typography']['body1'].textTransform,
+  margin: `0px`,
+}));
+
+const Tags: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `center`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  alignSelf: `stretch`,
+  margin: `24px 0px 0px 0px`,
+});
+
+const Chip1: any = styled(Chip, {
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
+  margin: `0px`,
+  color: theme.palette['text']['secondary'],
+  fontStyle: theme.typography['Components']['chip-label'].fontStyle,
+  fontFamily: theme.typography['Components']['chip-label'].fontFamily,
+  fontWeight: theme.typography['Components']['chip-label'].fontWeight,
+  fontSize: theme.typography['Components']['chip-label'].fontSize,
+  letterSpacing: theme.typography['Components']['chip-label'].letterSpacing,
+  lineHeight: theme.typography['Components']['chip-label'].lineHeight,
+  textDecoration: theme.typography['Components']['chip-label'].textDecoration,
+  textTransform: theme.typography['Components']['chip-label'].textTransform,
+}));
+
+const Chip2: any = styled(Chip, {
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
+  margin: `0px 0px 0px 8px`,
+  color: theme.palette['text']['secondary'],
+  fontStyle: theme.typography['Components']['chip-label'].fontStyle,
+  fontFamily: theme.typography['Components']['chip-label'].fontFamily,
+  fontWeight: theme.typography['Components']['chip-label'].fontWeight,
+  fontSize: theme.typography['Components']['chip-label'].fontSize,
+  letterSpacing: theme.typography['Components']['chip-label'].letterSpacing,
+  lineHeight: theme.typography['Components']['chip-label'].lineHeight,
+  textDecoration: theme.typography['Components']['chip-label'].textDecoration,
+  textTransform: theme.typography['Components']['chip-label'].textTransform,
+}));
+
+const Chip3: any = styled(Chip, {
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
+  margin: `0px 0px 0px 8px`,
+  color: theme.palette['text']['secondary'],
+  fontStyle: theme.typography['Components']['chip-label'].fontStyle,
+  fontFamily: theme.typography['Components']['chip-label'].fontFamily,
+  fontWeight: theme.typography['Components']['chip-label'].fontWeight,
+  fontSize: theme.typography['Components']['chip-label'].fontSize,
+  letterSpacing: theme.typography['Components']['chip-label'].letterSpacing,
+  lineHeight: theme.typography['Components']['chip-label'].lineHeight,
+  textDecoration: theme.typography['Components']['chip-label'].textDecoration,
+  textTransform: theme.typography['Components']['chip-label'].textTransform,
+}));
+
+const InfoTable: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `column`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  alignSelf: `stretch`,
+  margin: `24px 0px 0px 0px`,
+});
+
+const Row2: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `center`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  alignSelf: `stretch`,
+  margin: `0px`,
+});
+
+const Cell1: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `center`,
+  padding: `6px 16px 6px 0px`,
+  boxSizing: `border-box`,
+  flex: `1`,
+  margin: `0px`,
+});
+
+const Box1: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `column`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  flex: `1`,
+  margin: `0px`,
+});
+
+const Cell: any = styled('div')(({ theme }: any) => ({
+  textAlign: `left`,
+  whiteSpace: `pre-wrap`,
+  fontSynthesis: `none`,
+  color: theme.palette['text']['primary'],
+  fontStyle: theme.typography['Components']['table-header2'].fontStyle,
+  fontFamily: theme.typography['Components']['table-header2'].fontFamily,
+  fontWeight: theme.typography['Components']['table-header2'].fontWeight,
+  fontSize: theme.typography['Components']['table-header2'].fontSize,
+  letterSpacing: theme.typography['Components']['table-header2'].letterSpacing,
+  lineHeight: theme.typography['Components']['table-header2'].lineHeight,
+  textDecoration:
+    theme.typography['Components']['table-header2'].textDecoration,
+  textTransform: theme.typography['Components']['table-header2'].textTransform,
+  margin: `0px`,
+}));
+
+const Cell3: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `center`,
+  padding: `6px 0px 6px 16px`,
+  boxSizing: `border-box`,
+  flex: `1`,
+  margin: `0px`,
+});
+
+const Box2: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `column`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-end`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  flex: `1`,
+  margin: `0px`,
+});
+
+const Cell2: any = styled('div')(({ theme }: any) => ({
+  textAlign: `left`,
+  whiteSpace: `pre-wrap`,
+  fontSynthesis: `none`,
+  color: theme.palette['text']['secondary'],
+  fontStyle: theme.typography['Typography']['body2'].fontStyle,
+  fontFamily: theme.typography['Typography']['body2'].fontFamily,
+  fontWeight: theme.typography['Typography']['body2'].fontWeight,
+  fontSize: theme.typography['Typography']['body2'].fontSize,
+  letterSpacing: theme.typography['Typography']['body2'].letterSpacing,
+  lineHeight: theme.typography['Typography']['body2'].lineHeight,
+  textDecoration: theme.typography['Typography']['body2'].textDecoration,
+  textTransform: theme.typography['Typography']['body2'].textTransform,
+  margin: `0px`,
+}));
+
+const Row3: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `center`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  alignSelf: `stretch`,
+  margin: `0px`,
+});
+
+const Cell11: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `center`,
+  padding: `6px 16px 6px 0px`,
+  boxSizing: `border-box`,
+  flex: `1`,
+  margin: `0px`,
+});
+
+const Box3: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `column`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  flex: `1`,
+  margin: `0px`,
+});
+
+const Cell4: any = styled('div')(({ theme }: any) => ({
+  textAlign: `left`,
+  whiteSpace: `pre-wrap`,
+  fontSynthesis: `none`,
+  color: theme.palette['text']['primary'],
+  fontStyle: theme.typography['Components']['table-header2'].fontStyle,
+  fontFamily: theme.typography['Components']['table-header2'].fontFamily,
+  fontWeight: theme.typography['Components']['table-header2'].fontWeight,
+  fontSize: theme.typography['Components']['table-header2'].fontSize,
+  letterSpacing: theme.typography['Components']['table-header2'].letterSpacing,
+  lineHeight: theme.typography['Components']['table-header2'].lineHeight,
+  textDecoration:
+    theme.typography['Components']['table-header2'].textDecoration,
+  textTransform: theme.typography['Components']['table-header2'].textTransform,
+  margin: `0px`,
+}));
+
+const Cell31: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `center`,
+  padding: `6px 0px 6px 16px`,
+  boxSizing: `border-box`,
+  flex: `1`,
+  margin: `0px`,
+});
+
+const Box4: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `column`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-end`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  flex: `1`,
+  margin: `0px`,
+});
+
+const Cell5: any = styled('div')(({ theme }: any) => ({
+  textAlign: `left`,
+  whiteSpace: `pre-wrap`,
+  fontSynthesis: `none`,
+  color: theme.palette['text']['secondary'],
+  fontStyle: theme.typography['Typography']['body2'].fontStyle,
+  fontFamily: theme.typography['Typography']['body2'].fontFamily,
+  fontWeight: theme.typography['Typography']['body2'].fontWeight,
+  fontSize: theme.typography['Typography']['body2'].fontSize,
+  letterSpacing: theme.typography['Typography']['body2'].letterSpacing,
+  lineHeight: theme.typography['Typography']['body2'].lineHeight,
+  textDecoration: theme.typography['Typography']['body2'].textDecoration,
+  textTransform: theme.typography['Typography']['body2'].textTransform,
+  margin: `0px`,
+}));
+
+const Row4: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `center`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  alignSelf: `stretch`,
+  margin: `0px`,
+});
+
+const Cell12: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `center`,
+  padding: `6px 16px 6px 0px`,
+  boxSizing: `border-box`,
+  flex: `1`,
+  margin: `0px`,
+});
+
+const Box5: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `column`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  flex: `1`,
+  margin: `0px`,
+});
+
+const Cell6: any = styled('div')(({ theme }: any) => ({
+  textAlign: `left`,
+  whiteSpace: `pre-wrap`,
+  fontSynthesis: `none`,
+  color: theme.palette['text']['primary'],
+  fontStyle: theme.typography['Components']['table-header2'].fontStyle,
+  fontFamily: theme.typography['Components']['table-header2'].fontFamily,
+  fontWeight: theme.typography['Components']['table-header2'].fontWeight,
+  fontSize: theme.typography['Components']['table-header2'].fontSize,
+  letterSpacing: theme.typography['Components']['table-header2'].letterSpacing,
+  lineHeight: theme.typography['Components']['table-header2'].lineHeight,
+  textDecoration:
+    theme.typography['Components']['table-header2'].textDecoration,
+  textTransform: theme.typography['Components']['table-header2'].textTransform,
+  margin: `0px`,
+}));
+
+const Cell32: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `center`,
+  padding: `6px 0px 6px 16px`,
+  boxSizing: `border-box`,
+  flex: `1`,
+  margin: `0px`,
+});
+
+const Box6: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `column`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-end`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  flex: `1`,
+  margin: `0px`,
+});
+
+const Cell7: any = styled('div')(({ theme }: any) => ({
+  textAlign: `left`,
+  whiteSpace: `pre-wrap`,
+  fontSynthesis: `none`,
+  color: theme.palette['text']['secondary'],
+  fontStyle: theme.typography['Typography']['body2'].fontStyle,
+  fontFamily: theme.typography['Typography']['body2'].fontFamily,
+  fontWeight: theme.typography['Typography']['body2'].fontWeight,
+  fontSize: theme.typography['Typography']['body2'].fontSize,
+  letterSpacing: theme.typography['Typography']['body2'].letterSpacing,
+  lineHeight: theme.typography['Typography']['body2'].lineHeight,
+  textDecoration: theme.typography['Typography']['body2'].textDecoration,
+  textTransform: theme.typography['Typography']['body2'].textTransform,
+  margin: `0px`,
+}));
+
+const Row5: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `center`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  alignSelf: `stretch`,
+  margin: `0px`,
+});
+
+const Cell13: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `center`,
+  padding: `6px 16px 6px 0px`,
+  boxSizing: `border-box`,
+  flex: `1`,
+  margin: `0px`,
+});
+
+const Box7: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `column`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  flex: `1`,
+  margin: `0px`,
+});
+
+const Cell8: any = styled('div')(({ theme }: any) => ({
+  textAlign: `left`,
+  whiteSpace: `pre-wrap`,
+  fontSynthesis: `none`,
+  color: theme.palette['text']['primary'],
+  fontStyle: theme.typography['Components']['table-header2'].fontStyle,
+  fontFamily: theme.typography['Components']['table-header2'].fontFamily,
+  fontWeight: theme.typography['Components']['table-header2'].fontWeight,
+  fontSize: theme.typography['Components']['table-header2'].fontSize,
+  letterSpacing: theme.typography['Components']['table-header2'].letterSpacing,
+  lineHeight: theme.typography['Components']['table-header2'].lineHeight,
+  textDecoration:
+    theme.typography['Components']['table-header2'].textDecoration,
+  textTransform: theme.typography['Components']['table-header2'].textTransform,
+  margin: `0px`,
+}));
+
+const Cell33: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `center`,
+  padding: `6px 0px 6px 16px`,
+  boxSizing: `border-box`,
+  flex: `1`,
+  margin: `0px`,
+});
+
+const Box8: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `column`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-end`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  flex: `1`,
+  margin: `0px`,
+});
+
+const Cell9: any = styled('div')(({ theme }: any) => ({
+  textAlign: `left`,
+  whiteSpace: `pre-wrap`,
+  fontSynthesis: `none`,
+  color: theme.palette['text']['secondary'],
+  fontStyle: theme.typography['Typography']['body2'].fontStyle,
+  fontFamily: theme.typography['Typography']['body2'].fontFamily,
+  fontWeight: theme.typography['Typography']['body2'].fontWeight,
+  fontSize: theme.typography['Typography']['body2'].fontSize,
+  letterSpacing: theme.typography['Typography']['body2'].letterSpacing,
+  lineHeight: theme.typography['Typography']['body2'].lineHeight,
+  textDecoration: theme.typography['Typography']['body2'].textDecoration,
+  textTransform: theme.typography['Typography']['body2'].textTransform,
+  margin: `0px`,
+}));
+
+const Row51: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `column`,
+  justifyContent: `center`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  alignSelf: `stretch`,
+  margin: `0px`,
+});
+
+const Cell14: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `center`,
+  padding: `6px 0px`,
+  boxSizing: `border-box`,
+  alignSelf: `stretch`,
+  margin: `0px`,
+});
+
+const Box9: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `column`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  flex: `1`,
+  margin: `0px`,
+});
+
+const Cell10: any = styled('div')(({ theme }: any) => ({
+  textAlign: `left`,
+  whiteSpace: `pre-wrap`,
+  fontSynthesis: `none`,
+  color: theme.palette['text']['primary'],
+  fontStyle: theme.typography['Components']['table-header2'].fontStyle,
+  fontFamily: theme.typography['Components']['table-header2'].fontFamily,
+  fontWeight: theme.typography['Components']['table-header2'].fontWeight,
+  fontSize: theme.typography['Components']['table-header2'].fontSize,
+  letterSpacing: theme.typography['Components']['table-header2'].letterSpacing,
+  lineHeight: theme.typography['Components']['table-header2'].lineHeight,
+  textDecoration:
+    theme.typography['Components']['table-header2'].textDecoration,
+  textTransform: theme.typography['Components']['table-header2'].textTransform,
+  margin: `0px`,
+}));
+
+const Cell34: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `center`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  alignSelf: `stretch`,
+  margin: `0px`,
+});
+
+const Box10: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `column`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-end`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  flex: `1`,
+  margin: `0px`,
+});
+
+const Cell15: any = styled('div')(({ theme }: any) => ({
+  textAlign: `left`,
+  whiteSpace: `pre-wrap`,
+  fontSynthesis: `none`,
+  color: theme.palette['text']['secondary'],
+  fontStyle: theme.typography['Typography']['body2'].fontStyle,
+  fontFamily: theme.typography['Typography']['body2'].fontFamily,
+  fontWeight: theme.typography['Typography']['body2'].fontWeight,
+  fontSize: theme.typography['Typography']['body2'].fontSize,
+  letterSpacing: theme.typography['Typography']['body2'].letterSpacing,
+  lineHeight: theme.typography['Typography']['body2'].lineHeight,
+  textDecoration: theme.typography['Typography']['body2'].textDecoration,
+  textTransform: theme.typography['Typography']['body2'].textTransform,
+  alignSelf: `stretch`,
   margin: `0px`,
 }));
 
@@ -335,12 +978,14 @@ const FormContent: any = styled('div')({
   margin: `0px`,
 });
 
-const FormTest1: any = styled(FormTest, {
-  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
-})(({ theme, data }: any) => ({
-  alignSelf: data.isEdit ? 'unset' : `stretch`,
+const EntityForm1: any = styled(EntityForm)(({ theme }: any) => ({
+  alignSelf: `stretch`,
   margin: `0px`,
-  width: data.isEdit ? `500px` : 'unset',
+}));
+
+const FormTest1: any = styled(FormTest)(({ theme }: any) => ({
+  width: `500px`,
+  margin: `0px`,
 }));
 
 const InvestorContainer: any = styled('div', {
@@ -498,7 +1143,110 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
               </Frame3>
               <DividerHorizontal orientation="horizontal" />
             </ContainerHeader>
-            <ProfileContent></ProfileContent>
+            <ProfileContent>
+              <Typography1>{`XYZ Corporation`}</Typography1>
+              <Avatar1
+                sx={{ width: 40, height: 40 }}
+                variant={'circular'}
+                data={data}
+              >
+                {'XC'}
+              </Avatar1>
+              <Frame1>
+                <Typography2>{`Entity type:`}</Typography2>
+                <Typography3>{`S Corporation`}</Typography3>
+              </Frame1>
+              <Tags>
+                <Chip1
+                  label={'Accredited'}
+                  size={'medium'}
+                  color={'default'}
+                  disabled={false}
+                  variant={'filled'}
+                  data={data}
+                />
+                <Chip2
+                  label={'Domestic'}
+                  size={'medium'}
+                  color={'default'}
+                  disabled={false}
+                  variant={'filled'}
+                  data={data}
+                />
+                <Chip3
+                  label={'Control Person Exempt'}
+                  size={'medium'}
+                  color={'default'}
+                  disabled={false}
+                  variant={'filled'}
+                  data={data}
+                />
+              </Tags>
+              <InfoTable>
+                <Row2>
+                  <Cell1>
+                    <Box1>
+                      <Cell>{`Tax ID`}</Cell>
+                    </Box1>
+                  </Cell1>
+                  <Cell3>
+                    <Box2>
+                      <Cell2>{`{Number}`}</Cell2>
+                    </Box2>
+                  </Cell3>
+                </Row2>
+                <Row3>
+                  <Cell11>
+                    <Box3>
+                      <Cell4>{`Domicile`}</Cell4>
+                    </Box3>
+                  </Cell11>
+                  <Cell31>
+                    <Box4>
+                      <Cell5>{`{String}`}</Cell5>
+                    </Box4>
+                  </Cell31>
+                </Row3>
+                <Row4>
+                  <Cell12>
+                    <Box5>
+                      <Cell6>{`Accreditation`}</Cell6>
+                    </Box5>
+                  </Cell12>
+                  <Cell32>
+                    <Box6>
+                      <Cell7>{`{String}`}</Cell7>
+                    </Box6>
+                  </Cell32>
+                </Row4>
+                <Row5>
+                  <Cell13>
+                    <Box7>
+                      <Cell8>{`Control Person`}</Cell8>
+                    </Box7>
+                  </Cell13>
+                  <Cell33>
+                    <Box8>
+                      <Cell9>{`{String}`}</Cell9>
+                    </Box8>
+                  </Cell33>
+                </Row5>
+                <Row51>
+                  <Cell14>
+                    <Box9>
+                      <Cell10>{`Exempt reason`}</Cell10>
+                    </Box9>
+                  </Cell14>
+                  <Cell34>
+                    <Box10>
+                      <Cell15>
+                        {`Meets the required criteria for exemption. Investments comply with relevant laws and regulations.`}
+                      </Cell15>
+                    </Box10>
+                  </Cell34>
+                </Row51>
+              </InfoTable>
+            </ProfileContent>
           </Body>
         </ProfileContainer>
         {!data.isEdit && (
@@ -524,7 +1272,8 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                 </Frame31>
               </ContainerHeader1>
               <FormContent>
-                <FormTest1 data={data} />
+                {!data.isEdit && <EntityForm1 />}
+                {data.isEdit && <FormTest1 />}
               </FormContent>
             </Body1>
           </FormContainer>
