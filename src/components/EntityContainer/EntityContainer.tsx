@@ -46,7 +46,7 @@ const Content: any = styled('div')({
   padding: `0px`,
   boxSizing: `border-box`,
   height: `709px`,
-  width: `1400px`,
+  width: '100%',
   margin: `0px`,
 });
 
