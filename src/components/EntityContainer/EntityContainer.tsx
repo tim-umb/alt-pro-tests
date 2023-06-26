@@ -18,6 +18,7 @@ import VectorImage from 'src/assets/images/EntityContainer_Vector_2.png';
 import { styled } from '@mui/material/styles';
 import { EntityContainerProps } from 'src/types';
 import useEntityContainer from 'src/components/EntityContainer/useEntityContainer';
+import FormTest from 'src/components/FormTest/FormTest';
 
 const StateOpen: any = styled('div')(({ theme }: any) => ({
   boxShadow: theme.customShadows['elevation']['4'].boxShadow,
@@ -511,7 +512,9 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                   </Content2>
                 </Frame31>
               </ContainerHeader1>
-              <FormContent></FormContent>
+              <FormContent>
+                <FormTest />
+              </FormContent>
             </Body1>
           </FormContainer>
         )}
