@@ -27,7 +27,7 @@ const StateOpen: any = styled('div')(({ theme }: any) => ({
   isolation: `isolate`,
   flexDirection: `column`,
   height: 'auto',
-  width: 'fit-content',
+  width: '100%',
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
@@ -58,10 +58,9 @@ const ProfileContainer: any = styled('div')({
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  flex: `1`,
+  width: '350px',
   height: `709px`,
   margin: `0px`,
-  width: '350px',
 });
 
 const Body: any = styled('div')({
@@ -333,7 +332,9 @@ const FormContent: any = styled('div')({
   margin: `0px`,
 });
 
-const InvestorContainer: any = styled('div')(({ theme }: any) => ({
+const InvestorContainer: any = styled('div', {
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
   backgroundColor: theme.palette['colors']['grey']['100'],
   display: `flex`,
   position: `relative`,
@@ -343,9 +344,10 @@ const InvestorContainer: any = styled('div')(({ theme }: any) => ({
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  flex: `1`,
+  width: data.isEdit ? 'unset' : `525px`,
   height: `709px`,
   margin: `0px`,
+  flex: data.isEdit ? `1` : 'unset',
 }));
 
 const DividerVertical1: any = styled(Divider)(({ theme }: any) => ({
@@ -514,7 +516,7 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
             </Body1>
           </FormContainer>
         )}
-        <InvestorContainer>
+        <InvestorContainer data={data}>
           <DividerVertical1 orientation="vertical" />
           <Body2>
             <ContainerHeader2>
