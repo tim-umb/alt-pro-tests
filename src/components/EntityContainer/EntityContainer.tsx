@@ -18,7 +18,6 @@ import VectorImage from 'src/assets/images/EntityContainer_Vector_2.png';
 import { styled } from '@mui/material/styles';
 import { EntityContainerProps } from 'src/types';
 import useEntityContainer from 'src/components/EntityContainer/useEntityContainer';
-import FormTest from 'src/components/FormTest/FormTest';
 
 const StateOpen: any = styled('div')(({ theme }: any) => ({
   boxShadow: theme.customShadows['elevation']['4'].boxShadow,
@@ -62,7 +61,7 @@ const ProfileContainer: any = styled('div')({
   flex: `1`,
   height: `709px`,
   margin: `0px`,
-  maxWidth: '33%',
+  width: '350px',
 });
 
 const Body: any = styled('div')({
@@ -347,7 +346,6 @@ const InvestorContainer: any = styled('div')(({ theme }: any) => ({
   flex: `1`,
   height: `709px`,
   margin: `0px`,
-  width: '66%',
 }));
 
 const DividerVertical1: any = styled(Divider)(({ theme }: any) => ({
@@ -512,9 +510,7 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                   </Content2>
                 </Frame31>
               </ContainerHeader1>
-              <FormContent>
-                <FormTest />
-              </FormContent>
+              <FormContent></FormContent>
             </Body1>
           </FormContainer>
         )}
