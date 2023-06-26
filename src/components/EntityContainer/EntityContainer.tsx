@@ -146,10 +146,9 @@ const RightContent: any = styled('div')({
   margin: `0px`,
 });
 
-const Button1: any = styled(Button, {
-  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
-})(({ theme, data }: any) => ({
+const Button1: any = styled(Button)(({ theme }: any) => ({
   margin: `0px`,
+  border: '0px',
   padding: '0px',
   color: theme.palette['primary']['main'],
   fontStyle: theme.typography['Components']['button-small'].fontStyle,
@@ -180,24 +179,19 @@ const ProfileContent: any = styled('div')(({ theme }: any) => ({
   margin: `0px`,
 }));
 
-const FormContainer: any = styled('div', {
-  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
-})(({ theme, data }: any) => ({
+const FormContainer: any = styled('div')(({ theme }: any) => ({
   backgroundColor: theme.palette['colors']['grey']['100'],
   display: `flex`,
-  position: data.isEdit ? `absolute` : `relative`,
+  position: `relative`,
   isolation: `isolate`,
   flexDirection: `row`,
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  flex: data.isEdit ? 'unset' : `1`,
+  flex: `1`,
   height: `709px`,
-  margin: data.isEdit ? 'unset' : `0px`,
-  width: data.isEdit ? `500px` : 'unset',
-  left: data.isEdit ? `400px` : 'unset',
-  top: data.isEdit ? `0px` : 'unset',
+  margin: `0px`,
 }));
 
 const DividerVertical: any = styled(Divider)(({ theme }: any) => ({
@@ -444,9 +438,7 @@ const InvestorContent: any = styled('div')({
   margin: `0px`,
 });
 
-const Button2: any = styled(Button, {
-  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
-})(({ theme, data }: any) => ({
+const Button2: any = styled(Button)(({ theme }: any) => ({
   margin: `0px`,
   color: theme.palette['primary']['contrast'],
   fontStyle: `normal`,
@@ -480,8 +472,7 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                     variant={'text'}
                     onClick={fns.toggleEdit}
                     padding={'0px'}
-                    border={'0px!important'}
-                    data={data}
+                    border={'0px'}
                   >
                     {data.editButton()}
                   </Button1>
@@ -492,32 +483,26 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
             <ProfileContent></ProfileContent>
           </Body>
         </ProfileContainer>
-        {!data.isEdit && (
-          <FormContainer data={data}>
-            <DividerVertical orientation="vertical" />
-            <Body1>
-              <ContainerHeader1>
-                <Frame31>
-                  <LeftContent>
-                    <Icon1>
-                      <CloseOutlined onClick={fns.toggleEdit}>
-                        <Vector
-                          src={VectorImage}
-                          loading="lazy"
-                          alt={'Vector'}
-                        />
-                      </CloseOutlined>
-                    </Icon1>
-                  </LeftContent>
-                  <Content2>
-                    <Title1>{`Edit Entity`}</Title1>
-                  </Content2>
-                </Frame31>
-              </ContainerHeader1>
-              <FormContent></FormContent>
-            </Body1>
-          </FormContainer>
-        )}
+        <FormContainer>
+          <DividerVertical orientation="vertical" />
+          <Body1>
+            <ContainerHeader1>
+              <Frame31>
+                <LeftContent>
+                  <Icon1>
+                    <CloseOutlined onClick={fns.toggleEdit}>
+                      <Vector src={VectorImage} loading="lazy" alt={'Vector'} />
+                    </CloseOutlined>
+                  </Icon1>
+                </LeftContent>
+                <Content2>
+                  <Title1>{`Edit Entity`}</Title1>
+                </Content2>
+              </Frame31>
+            </ContainerHeader1>
+            <FormContent></FormContent>
+          </Body1>
+        </FormContainer>
         <InvestorContainer>
           <DividerVertical1 orientation="vertical" />
           <Body2>
@@ -535,7 +520,6 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                 color={'primary'}
                 disabled={false}
                 variant={'contained'}
-                data={data}
               >
                 {'Add Individual'}
               </Button2>
