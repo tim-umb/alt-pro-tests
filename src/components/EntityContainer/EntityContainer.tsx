@@ -27,7 +27,7 @@ const StateOpen: any = styled('div')(({ theme }: any) => ({
   isolation: `isolate`,
   flexDirection: `column`,
   height: 'auto',
-  width: '100%',
+  width: 'fit-content',
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
