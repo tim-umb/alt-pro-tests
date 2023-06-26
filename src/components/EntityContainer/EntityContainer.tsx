@@ -356,9 +356,10 @@ const InvestorContainer: any = styled('div', {
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  width: 'fit-content',
+  width: data.isEdit ? 'unset' : `525px`,
   height: `709px`,
   margin: `0px`,
+  objectFit: 'fill',
   flex: data.isEdit ? `1` : 'unset',
 }));
 
