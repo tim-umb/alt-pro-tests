@@ -150,8 +150,6 @@ const Button1: any = styled(Button, {
   shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
 })(({ theme, data }: any) => ({
   margin: `0px`,
-  border: '0px',
-  padding: '0px',
   color: theme.palette['primary']['main'],
   fontStyle: theme.typography['Components']['button-small'].fontStyle,
   fontFamily: theme.typography['Components']['button-small'].fontFamily,
@@ -480,8 +478,6 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                     disabled={false}
                     variant={'text'}
                     onClick={fns.toggleEdit}
-                    padding={'0px'}
-                    border={'0px'}
                     data={data}
                   >
                     {data.editButton()}
