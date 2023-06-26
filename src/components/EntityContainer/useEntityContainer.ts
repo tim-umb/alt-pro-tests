@@ -16,6 +16,7 @@ import React, { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 
 const useEntityContainer = () => {
+  const toggleEdit = (): any => {};
   const editButton = (): any => {
     return 'Edit';
   };
@@ -31,7 +32,7 @@ const useEntityContainer = () => {
   const data: any = { isEdit, editButton, useButtonVariant };
 
   const fns: any = {
-    toggleEdit: () => setIsEdit(!isEdit),
+    toggleEdit: () => setIsEdit(!isEdit), toggleEdit
   };
 
   return { data, fns };

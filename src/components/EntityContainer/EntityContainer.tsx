@@ -27,7 +27,7 @@ const StateOpen: any = styled('div')(({ theme }: any) => ({
   isolation: `isolate`,
   flexDirection: `column`,
   height: 'auto',
-  width: 'fit-content',
+  width: '100%',
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
@@ -476,9 +476,10 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                   <Button1
                     size={'small'}
                     color={'primary'}
-                    disabled={false}
-                    variant={data.useButtonVariant()}
+                    disabled={data.isEdit}
+                    variant={'text'}
                     onClick={fns.toggleEdit}
+                    padding={'0px'}
                     data={data}
                   >
                     {data.editButton()}
