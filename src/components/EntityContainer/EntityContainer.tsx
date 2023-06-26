@@ -194,7 +194,7 @@ const FormContainer: any = styled('div', {
   flex: data.isEdit ? 'unset' : `1`,
   height: `709px`,
   margin: data.isEdit ? 'unset' : `0px`,
-  width: '100%',
+  width: 'auto',
   left: data.isEdit ? `400px` : 'unset',
   top: data.isEdit ? `0px` : 'unset',
 }));
@@ -355,7 +355,7 @@ const InvestorContainer: any = styled('div', {
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  width: '100%',
+  width: 'auto',
   height: `709px`,
   margin: `0px`,
   flex: data.isEdit ? `1` : 'unset',
