@@ -13,13 +13,19 @@
 
 import { colors } from '@mui/material';
 import React, { useState } from 'react';
+import { useTheme } from '@mui/material/styles';
 
 const useEntityContainer = () => {
   const toggleEdit = (): any => {};
   const editButton = (): any => {
-    return (
-      data.isEdit ? 'Edit' : 'Save Edit'
-    );
+    return 'Edit';
+  };
+
+  const useButtonColor = (label: string) => {
+    const theme = useTheme();
+    return label === 'Edit'
+      ? theme.palette['primary']
+      : theme.palette['success'];
   };
 
   const [isEdit, setIsEdit] = useState(false);
