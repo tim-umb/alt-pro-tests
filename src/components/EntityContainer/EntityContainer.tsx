@@ -16,6 +16,7 @@ import React from 'react';
 import { Button, Divider } from '@mui/material';
 import VectorImage from 'src/assets/images/EntityContainer_Vector_2.png';
 import { styled } from '@mui/material/styles';
+import FormTest from 'src/components/FormTest/FormTest';
 import { EntityContainerProps } from 'src/types';
 import useEntityContainer from 'src/components/EntityContainer/useEntityContainer';
 
@@ -27,7 +28,7 @@ const StateOpen: any = styled('div')(({ theme }: any) => ({
   isolation: `isolate`,
   flexDirection: `column`,
   height: 'auto',
-  width: 'fit-content',
+  width: '100%',
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
@@ -327,10 +328,20 @@ const FormContent: any = styled('div')({
   flexDirection: `column`,
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
+  padding: `32px`,
+  boxSizing: `border-box`,
   alignSelf: `stretch`,
   height: `652px`,
   margin: `0px`,
 });
+
+const FormTest1: any = styled(FormTest, {
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
+  alignSelf: data.isEdit ? 'unset' : `stretch`,
+  margin: `0px`,
+  width: data.isEdit ? `500px` : 'unset',
+}));
 
 const InvestorContainer: any = styled('div', {
   shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
@@ -512,7 +523,9 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                   </Content2>
                 </Frame31>
               </ContainerHeader1>
-              <FormContent></FormContent>
+              <FormContent>
+                <FormTest1 data={data} />
+              </FormContent>
             </Body1>
           </FormContainer>
         )}
