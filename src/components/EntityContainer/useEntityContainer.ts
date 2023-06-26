@@ -11,18 +11,23 @@
  *
  **********************************************************************/
 
+import { colors } from '@mui/material';
 import React, { useState } from 'react';
 
 const useEntityContainer = () => {
   const toggleEdit = (): any => {};
-  const editButton = (): any => {};
+  const editButton = (): any => {
+    return (
+      data.isEdit ? 'Edit' : 'Save Edit'
+    );
+  };
 
   const [isEdit, setIsEdit] = useState(false);
 
-  const data: any = { isEdit };
+  const data: any = { isEdit, editButton };
 
   const fns: any = {
-    toggleEdit: () => setIsEdit(!isEdit)
+    toggleEdit: () => setIsEdit(!isEdit),
   };
 
   return { data, fns };

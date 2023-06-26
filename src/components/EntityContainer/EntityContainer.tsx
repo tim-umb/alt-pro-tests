@@ -150,7 +150,9 @@ const Button1: any = styled(Button, {
   shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
 })(({ theme, data }: any) => ({
   margin: `0px`,
-  color: theme.palette['primary']['main'],
+  color: data.editButton() === 'Edit'
+  ? theme.palette['primary']['main']
+  : theme.palette['success']['main'],
   fontStyle: theme.typography['Components']['button-small'].fontStyle,
   fontFamily: theme.typography['Components']['button-small'].fontFamily,
   fontWeight: theme.typography['Components']['button-small'].fontWeight,
@@ -159,6 +161,10 @@ const Button1: any = styled(Button, {
   lineHeight: theme.typography['Components']['button-small'].lineHeight,
   textDecoration: theme.typography['Components']['button-small'].textDecoration,
   textTransform: theme.typography['Components']['button-small'].textTransform,
+  backgroundColor: 'transparent',
+  '&:hover': {
+    backgroundColor: !data.editButton() ? theme.palette['success']['main'] : null,
+  },
 }));
 
 const DividerHorizontal: any = styled(Divider)(({ theme }: any) => ({
@@ -474,9 +480,11 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                 <RightContent>
                   <Button1
                     size={'small'}
-                    color={'primary'}
+                    color={data.editButton() === 'Edit'
+                    ? 'primary'
+                    : 'success'}
                     disabled={false}
-                    variant={'text'}
+                    variant={data.isEdit ? 'text' : 'outlined'}
                     onClick={fns.toggleEdit}
                     data={data}
                   >
