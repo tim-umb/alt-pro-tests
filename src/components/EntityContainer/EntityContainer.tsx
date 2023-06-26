@@ -477,7 +477,7 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
                     size={'small'}
                     color={'primary'}
                     disabled={false}
-                    variant={data.isEdit ? 'text' : 'disabled'}
+                    variant={data.useButtonVariant()}
                     onClick={fns.toggleEdit}
                     data={data}
                   >

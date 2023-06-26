@@ -16,21 +16,19 @@ import React, { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 
 const useEntityContainer = () => {
-  const toggleEdit = (): any => {};
   const editButton = (): any => {
     return 'Edit';
   };
 
-  const useButtonColor = (label: string) => {
-    const theme = useTheme();
-    return label === 'Edit'
-      ? theme.palette['primary']
-      : theme.palette['success'];
-  };
-
   const [isEdit, setIsEdit] = useState(false);
 
-  const data: any = { isEdit, editButton };
+  const useButtonVariant = (): any => {
+    return (
+      data.isEdit ? 'text' : 'disabled'
+    );
+  };
+
+  const data: any = { isEdit, editButton, useButtonVariant };
 
   const fns: any = {
     toggleEdit: () => setIsEdit(!isEdit),
