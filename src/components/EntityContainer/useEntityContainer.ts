@@ -16,9 +16,6 @@ import React, { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 
 const useEntityContainer = () => {
-  const toggleEdit = (): any => {};
-  const toggleEdit = (): any => {};
-  const toggleEdit = (): any => {};
   const editButton = (): any => {
     return 'Edit';
   };
