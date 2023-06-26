@@ -343,9 +343,7 @@ const FormTest1: any = styled(FormTest, {
   width: data.isEdit ? `500px` : 'unset',
 }));
 
-const InvestorContainer: any = styled('div', {
-  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
-})(({ theme, data }: any) => ({
+const InvestorContainer: any = styled('div')(({ theme }: any) => ({
   backgroundColor: theme.palette['colors']['grey']['100'],
   display: `flex`,
   position: `relative`,
@@ -355,10 +353,10 @@ const InvestorContainer: any = styled('div', {
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  width: 'auto',
+  flex: `1`,
   height: `709px`,
   margin: `0px`,
-  flex: data.isEdit ? `1` : 'unset',
+  width: 'auto',
 }));
 
 const DividerVertical1: any = styled(Divider)(({ theme }: any) => ({
@@ -529,7 +527,7 @@ function EntityContainer(props: EntityContainerProps): JSX.Element {
             </Body1>
           </FormContainer>
         )}
-        <InvestorContainer data={data}>
+        <InvestorContainer>
           <DividerVertical1 orientation="vertical" />
           <Body2>
             <ContainerHeader2>
