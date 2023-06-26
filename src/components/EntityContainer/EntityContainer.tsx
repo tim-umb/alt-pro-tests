@@ -182,7 +182,7 @@ const ProfileContent: any = styled('div')(({ theme }: any) => ({
 const FormContainer: any = styled('div', {
   shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
 })(({ theme, data }: any) => ({
-  backgroundColor: theme.palette['colors']['grey']['100'],
+  backgroundColor: theme.palette['colors']['grey']['200'],
   display: `flex`,
   position: data.isEdit ? `absolute` : `relative`,
   isolation: `isolate`,
@@ -355,7 +355,7 @@ const InvestorContainer: any = styled('div', {
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  width: data.isEdit ? 'unset' : `350px`,
+  width: data.isEdit ? 'unset' : `450px`,
   height: `709px`,
   margin: `0px`,
   flex: data.isEdit ? `1` : 'unset',
