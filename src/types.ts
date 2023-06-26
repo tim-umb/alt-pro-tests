@@ -55,14 +55,10 @@
 
 
 
-export interface EntityFormProps {
-  className?: any;
-};
-
-
 
 export interface EntityContainerProps {
   className?: any;
+  justifyContent: any;
 }
 
 
@@ -79,6 +75,14 @@ export interface EntityContainerProps {
 
 
 
+
+
+
+
+
+export interface EntityFormProps {
+  className?: any;
+};
 
 
 
