@@ -194,7 +194,8 @@ const FormContainer: any = styled('div', {
   flex: data.isEdit ? 'unset' : `1`,
   height: `709px`,
   margin: data.isEdit ? 'unset' : `0px`,
-  width: 'fit-content',
+  objectFit: 'fill',
+  width: data.isEdit ? `500px` : 'unset',
   left: data.isEdit ? `400px` : 'unset',
   top: data.isEdit ? `0px` : 'unset',
 }));
