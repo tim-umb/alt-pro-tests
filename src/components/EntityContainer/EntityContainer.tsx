@@ -61,9 +61,11 @@ const ProfileContainer: any = styled('div')({
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  width: '350px',
+  flex: `1`,
   height: `709px`,
   margin: `0px`,
+  maxWidth: '350px',
+  minWidth: '350px',
 });
 
 const Body: any = styled('div')({
