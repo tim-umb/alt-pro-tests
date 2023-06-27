@@ -22,6 +22,7 @@ export interface EntityProfileProps {
 
 export interface EntityContainerProps {
   className?: any;
+  jsutaifyContent?: any;
 }
 
 
