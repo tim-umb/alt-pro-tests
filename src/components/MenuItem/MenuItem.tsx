@@ -13,9 +13,7 @@
  **********************************************************************/
 
 import React from 'react';
-import { IconButton, SvgIcon } from '@mui/material';
-import StarIcon from '@mui/icons-material/Star';
-import { ReactComponent as StarFilled } from 'src/assets/images/_StarFilled.svg';
+import VectorImage from 'src/assets/images/MenuItem_Vector.png';
 import { styled } from '@mui/material/styles';
 import { MenuItemProps } from 'src/types';
 import useMenuItem from 'src/components/MenuItem/useMenuItem';
@@ -63,10 +61,40 @@ const LeftContent: any = styled('div')({
   margin: `0px`,
 });
 
-const Icon1: any = styled(SvgIcon)(({ theme }: any) => ({
-  color: theme.palette['action']['active'],
+const Icon1: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
   margin: `0px`,
-}));
+});
+
+const StarFilled: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  width: `24px`,
+  height: `24px`,
+  margin: `0px`,
+  overflow: `hidden`,
+});
+
+const Vector: any = styled('img')({
+  height: `19px`,
+  width: `20px`,
+  position: `absolute`,
+  left: `2px`,
+  top: `3px`,
+});
 
 const MinWidth: any = styled('div')({
   display: `flex`,
@@ -127,10 +155,6 @@ const Secondary: any = styled('div')(({ theme }: any) => ({
   margin: `0px`,
 }));
 
-const IconButton1: any = styled(IconButton)(({ theme }: any) => ({
-  margin: `0px`,
-}));
-
 function MenuItem(props: MenuItemProps): JSX.Element {
   const { data } = useMenuItem();
 
@@ -138,21 +162,17 @@ function MenuItem(props: MenuItemProps): JSX.Element {
     <StatePrimary className={props.className} data={data}>
       <Container>
         <LeftContent>
-          <Icon1 fontSize={'medium'} component={StarFilled} />
+          <Icon1>
+            <StarFilled>
+              <Vector src={VectorImage} loading="lazy" alt={'Vector'} />
+            </StarFilled>
+          </Icon1>
           <MinWidth></MinWidth>
         </LeftContent>
         <ListItemText>
           <ListItem>{`List item`}</ListItem>
           {false && <Secondary>{`Secondary`}</Secondary>}
         </ListItemText>
-        {false && (
-          <IconButton1 size={'medium'} color={'default'} disabled={false}>
-            <SvgIcon
-              component={StarIcon}
-              htmlColor={`rgba(0, 0, 0, 0.56)`}
-            ></SvgIcon>
-          </IconButton1>
-        )}
       </Container>
     </StatePrimary>
   );
