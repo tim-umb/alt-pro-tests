@@ -11,11 +11,11 @@
  *
  **********************************************************************/
 
-import React from 'react';
+import React, {useState} from 'react';
 const useMenuItem = () => {
   const [isHover, setIsHover] = useState(false);
 
-  const data: any = { isHover, isHover };
+  const data: any = { isHover };
 
   const fns: any = {};
 
