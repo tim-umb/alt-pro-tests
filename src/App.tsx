@@ -13,8 +13,8 @@ function App() {
         <ThemeProvider theme={questTheme}>
           <Routes>
             <Route path="/" element={<EntityContainer />} />
-            <MenuItem />
           </Routes>
+          <MenuItem />
         </ThemeProvider>
       </StyledEngineProvider>
     </HelmetProvider>
