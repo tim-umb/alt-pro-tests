@@ -11,7 +11,7 @@ function App() {
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={questTheme}>
           <Routes>
-            <Route path="/" element={<EntityContainer jsutaifyContent={'center'}/>} />
+            <Route path="/" element={<EntityContainer />} />
           </Routes>
         </ThemeProvider>
       </StyledEngineProvider>
