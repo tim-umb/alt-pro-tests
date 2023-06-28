@@ -11,11 +11,17 @@
  *
  **********************************************************************/
 
-import React, {useState} from 'react';
-const useMenuItem = () => {
-  const data: any = {  };
+import React, { useState } from 'react';
 
-  const fns: any = {};
+const useMenuItem = () => {
+  const [onHover, setOnHover] = useState(false);
+
+  const data: any = { onHover };
+
+  const fns: any = {
+    handleMouseEnter: () => setOnHover(true),
+    handleMouseLeave: () => setOnHover(false),
+  };
 
   return { data, fns };
 };

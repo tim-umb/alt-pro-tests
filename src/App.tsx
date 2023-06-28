@@ -5,6 +5,7 @@ import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import questTheme from 'src/DesignSystemLightTheme';
 import EntityContainer from 'src/components/EntityContainer/EntityContainer';
 import MenuItem from 'src/components/MenuItem/MenuItem';
+import useMenuItem from 'src/components/MenuItem/useMenuItem';
 
 function App() {
   return (
