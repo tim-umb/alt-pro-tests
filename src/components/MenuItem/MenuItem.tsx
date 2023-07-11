@@ -158,10 +158,15 @@ const Secondary: any = styled('div')(({ theme }: any) => ({
 }));
 
 function MenuItem(props: MenuItemProps): JSX.Element {
-  const { data } = useMenuItem();
+  const { data, fns } = useMenuItem();
 
   return (
-    <StatePrimary className={props.className} data={data}>
+    <StatePrimary
+      onMouseLeave={data.handleMenuItemHover(false)}
+      onMouseEnter={fns.handleMenuItemHover(true)}
+      className={props.className}
+      data={data}
+    >
       <Container>
         <LeftContent>
           <Icon1>
