@@ -11,11 +11,21 @@
  *
  **********************************************************************/
 
-import React from 'react';
+import React, { useState } from 'react';
 const useMenuItem = () => {
-  const data: any = {};
+  const [onHover, setOnHover] = useState(false);
 
-  const fns: any = {};
+  const data: any = { onHover };
+
+  const handleMenuItemHover = (hover: boolean) => {
+    data.onHover = hover;
+  };
+
+  const fns: any = {
+      handleMouseEnter: () => setOnHover(true),
+      handleMouseLeave: () => setOnHover(false),
+      handleMenuItemHover,
+  };
 
   return { data, fns };
 };
