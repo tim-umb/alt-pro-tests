@@ -158,7 +158,7 @@ const Secondary: any = styled('div')(({ theme }: any) => ({
 }));
 
 function MenuItem(props: MenuItemProps): JSX.Element {
-  const { fns } = useMenuItem(props);
+  const { fns } = useMenuItem();
 
   return (
     <StatePrimary className={props.className} fns={fns}>
