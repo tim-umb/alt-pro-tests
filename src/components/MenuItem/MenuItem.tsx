@@ -19,20 +19,22 @@ import { MenuItemProps } from 'src/types';
 import useMenuItem from 'src/components/MenuItem/useMenuItem';
 
 const StatePrimary: any = styled('div', {
-  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
-})(({ theme, data }: any) => ({
+  shouldForwardProp: (prop: any) => !['fns'].includes(prop.toString()),
+})(({ theme, fns }: any) => ({
   display: `flex`,
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `column`,
+  height: `48px`,
   width: '100%',
-  justifyContent: `flex-start`,
+  justifyContent: fns.handleMenuItemChange ? `center` : `space-between`,
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  height: 'auto',
-  backgroundColor: data.onHover ? theme.palette['action']['hover'] : 'unset',
-  borderRadius: data.onHover ? `4px` : 'unset',
+  backgroundColor: fns.handleMenuItemChange
+    ? theme.palette['action']['hover']
+    : 'unset',
+  borderRadius: fns.handleMenuItemChange ? `4px` : 'unset',
 }));
 
 const Container: any = styled('div')({
@@ -42,7 +44,7 @@ const Container: any = styled('div')({
   flexDirection: `row`,
   justifyContent: `flex-start`,
   alignItems: `center`,
-  padding: `8px 16px`,
+  padding: `8px 12px`,
   boxSizing: `border-box`,
   alignSelf: `stretch`,
   margin: `0px`,
@@ -156,10 +158,10 @@ const Secondary: any = styled('div')(({ theme }: any) => ({
 }));
 
 function MenuItem(props: MenuItemProps): JSX.Element {
-  const { data, fns } = useMenuItem();
+  const { fns } = useMenuItem(props);
 
   return (
-    <StatePrimary className={props.className} data={data}>
+    <StatePrimary className={props.className} fns={fns}>
       <Container>
         <LeftContent>
           <Icon1>

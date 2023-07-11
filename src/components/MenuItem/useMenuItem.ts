@@ -14,13 +14,14 @@
 import React, { useState } from 'react';
 
 const useMenuItem = () => {
+  const handleMenuItemChange = (): any => {};
   const [onHover, setOnHover] = useState(false);
 
   const data: any = { onHover };
 
   const fns: any = {
     handleMouseEnter: () => setOnHover(true),
-    handleMouseLeave: () => setOnHover(false),
+    handleMouseLeave: () => setOnHover(false), handleMenuItemChange
   };
 
   return { data, fns };
