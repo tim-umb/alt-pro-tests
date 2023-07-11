@@ -39,7 +39,6 @@ export interface AppBarProps {
 
 export interface MenuItemProps {
   className?: any;
-  prop1: any;
 };
 
 
