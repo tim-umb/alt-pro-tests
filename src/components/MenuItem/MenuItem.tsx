@@ -162,7 +162,7 @@ function MenuItem(props: MenuItemProps): JSX.Element {
 
   return (
     <StatePrimary
-      onMouseLeave={data.handleMenuItemHover(false)}
+      onMouseLeave={fns.handleMenuItemHover(false)}
       onMouseEnter={fns.handleMenuItemHover(true)}
       className={props.className}
       data={data}
