@@ -25,7 +25,7 @@ const StatePrimary: any = styled('div', {
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `column`,
-  height: `48px`,
+  height: 'auto',
   width: '100%',
   justifyContent: fns.handleMenuItemChange ? `center` : `space-between`,
   alignItems: `flex-start`,
