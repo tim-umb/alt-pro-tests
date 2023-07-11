@@ -19,22 +19,22 @@ import { MenuItemProps } from 'src/types';
 import useMenuItem from 'src/components/MenuItem/useMenuItem';
 
 const StatePrimary: any = styled('div', {
-  shouldForwardProp: (prop: any) => !['fns'].includes(prop.toString()),
-})(({ theme, fns }: any) => ({
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
   display: `flex`,
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `column`,
   height: 'auto',
   width: '100%',
-  justifyContent: fns.handleMenuItemChange ? `center` : `space-between`,
+  justifyContent: data.handleMenuItemChange ? `center` : `space-between`,
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  backgroundColor: fns.handleMenuItemChange
+  backgroundColor: data.handleMenuItemChange
     ? theme.palette['action']['hover']
     : 'unset',
-  borderRadius: fns.handleMenuItemChange ? `4px` : 'unset',
+  borderRadius: data.handleMenuItemChange ? `4px` : 'unset',
 }));
 
 const Container: any = styled('div')({
@@ -158,10 +158,10 @@ const Secondary: any = styled('div')(({ theme }: any) => ({
 }));
 
 function MenuItem(props: MenuItemProps): JSX.Element {
-  const { fns } = useMenuItem();
+  const { data } = useMenuItem();
 
   return (
-    <StatePrimary className={props.className} fns={fns}>
+    <StatePrimary className={props.className} data={data}>
       <Container>
         <LeftContent>
           <Icon1>

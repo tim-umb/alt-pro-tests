@@ -27,9 +27,11 @@
 
 
 
+
 export interface MenuItemProps {
   className?: any;
 };
+
 
 
 
@@ -57,6 +59,7 @@ export interface AppBarProps {
 
 
 
+
 export interface MainNavProps {
   className?: any;
 };
@@ -68,9 +71,11 @@ export interface MainNavProps {
 
 
 
+
 export interface EntityContainerProps {
   className?: any;
 }
+
 
 
 
@@ -102,9 +107,11 @@ export interface EntityProfileProps {
 
 
 
+
 export interface EntityFormProps {
   className?: any;
 };
+
 
 
 
