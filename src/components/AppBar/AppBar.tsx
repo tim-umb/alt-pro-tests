@@ -15,10 +15,10 @@
 import React from 'react';
 import ViewHeadlineIcon from '@mui/icons-material/ViewHeadline';
 import { SvgIcon } from '@mui/material';
+import VectorImage from 'src/assets/images/AppBar_Vector_1.png';
+import Vector1Image from 'src/assets/images/AppBar_Vector_2.png';
+import Vector2Image from 'src/assets/images/AppBar_Vector_3.png';
 import { styled } from '@mui/material/styles';
-import HistoryOutlined from 'src/components/HistoryOutlined/HistoryOutlined';
-import NotificationsOutlined from 'src/components/NotificationsOutlined/NotificationsOutlined';
-import LogoutOutlined from 'src/components/LogoutOutlined/LogoutOutlined';
 import { AppBarProps } from 'src/types';
 import useAppBar from 'src/components/AppBar/useAppBar';
 
@@ -27,12 +27,12 @@ const AppBar1: any = styled('div')({
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `column`,
-  width: '100vw',
+  width: '100%',
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  height: `48px`,
+  height: 'auto',
 });
 
 const Paper: any = styled('div')(({ theme }: any) => ({
@@ -133,11 +133,28 @@ const Icon1: any = styled('div')({
   margin: `0px`,
 });
 
-const HistoryOutlined1: any = styled(HistoryOutlined)(({ theme }: any) => ({
+const HistoryOutlined: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
   width: `20px`,
   height: `20px`,
   margin: `0px`,
-}));
+  overflow: `hidden`,
+});
+
+const Vector: any = styled('img')({
+  height: `15px`,
+  width: `17.5px`,
+  position: `absolute`,
+  left: `1px`,
+  top: `3px`,
+});
 
 const Icon2: any = styled('div')({
   display: `flex`,
@@ -151,13 +168,28 @@ const Icon2: any = styled('div')({
   margin: `0px 0px 0px 16px`,
 });
 
-const NotificationsOutline: any = styled(NotificationsOutlined)(
-  ({ theme }: any) => ({
-    width: `20px`,
-    height: `20px`,
-    margin: `0px`,
-  })
-);
+const NotificationsOutline: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  width: `20px`,
+  height: `20px`,
+  margin: `0px`,
+  overflow: `hidden`,
+});
+
+const Vector1: any = styled('img')({
+  height: `16.25px`,
+  width: `13.33px`,
+  position: `absolute`,
+  left: `3px`,
+  top: `2px`,
+});
 
 const Icon3: any = styled('div')({
   display: `flex`,
@@ -171,11 +203,43 @@ const Icon3: any = styled('div')({
   margin: `0px 0px 0px 16px`,
 });
 
-const LogoutOutlined1: any = styled(LogoutOutlined)(({ theme }: any) => ({
+const LogoutOutlined: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
   width: `20px`,
   height: `20px`,
   margin: `0px`,
-}));
+  overflow: `hidden`,
+});
+
+const Group: any = styled('div')({
+  display: `flex`,
+  position: `absolute`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  width: `15px`,
+  height: `15px`,
+  left: `3px`,
+  top: `3px`,
+});
+
+const Vector2: any = styled('img')({
+  height: `15px`,
+  width: `15px`,
+  position: `absolute`,
+  left: `0px`,
+  top: `0px`,
+});
 
 const MinHeight: any = styled('div')({
   display: `flex`,
@@ -207,13 +271,21 @@ function AppBar(props: AppBarProps): JSX.Element {
           </LeftSide>
           <Stack>
             <Icon1>
-              <HistoryOutlined1 />
+              <HistoryOutlined>
+                <Vector src={VectorImage} loading="lazy" alt={'Vector'} />
+              </HistoryOutlined>
             </Icon1>
             <Icon2>
-              <NotificationsOutline />
+              <NotificationsOutline>
+                <Vector1 src={Vector1Image} loading="lazy" alt={'Vector'} />
+              </NotificationsOutline>
             </Icon2>
             <Icon3>
-              <LogoutOutlined1 />
+              <LogoutOutlined>
+                <Group>
+                  <Vector2 src={Vector2Image} loading="lazy" alt={'Vector'} />
+                </Group>
+              </LogoutOutlined>
             </Icon3>
           </Stack>
           <MinHeight></MinHeight>
