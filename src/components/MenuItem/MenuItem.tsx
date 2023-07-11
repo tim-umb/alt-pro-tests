@@ -27,14 +27,14 @@ const StatePrimary: any = styled('div', {
   flexDirection: `column`,
   height: 'auto',
   width: '100%',
-  justifyContent: data.handleMenuItemChange ? `center` : `space-between`,
+  justifyContent: data.onHover ? `center` : `space-between`,
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  backgroundColor: data.handleMenuItemChange
+  backgroundColor: data.onHover
     ? theme.palette['action']['hover']
     : 'unset',
-  borderRadius: data.handleMenuItemChange ? `4px` : 'unset',
+  borderRadius: data.onHover ? `4px` : 'unset',
 }));
 
 const Container: any = styled('div')({
@@ -158,10 +158,10 @@ const Secondary: any = styled('div')(({ theme }: any) => ({
 }));
 
 function MenuItem(props: MenuItemProps): JSX.Element {
-  const { data } = useMenuItem();
+  const { data, fns } = useMenuItem();
 
   return (
-    <StatePrimary className={props.className} data={data}>
+    <StatePrimary className={props.className} data={data} onMouseEnter={fns.handleMouseEnter} onMouseLeave={fns.handleMouseLeave}>
       <Container>
         <LeftContent>
           <Icon1>
