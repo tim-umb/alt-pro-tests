@@ -11,7 +11,7 @@
  *
  **********************************************************************/
 
-import React from 'react';
+import React, { useState } from 'react';
 const useHeader = () => {
   const [headerTitle, setHeaderTitle] = useState<string>('Add Investor');
 
