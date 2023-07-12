@@ -19,22 +19,22 @@ import { MenuItemProps } from 'src/types';
 import useMenuItem from 'src/components/MenuItem/useMenuItem';
 
 const StatePrimary: any = styled('div', {
-  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
-})(({ theme, data }: any) => ({
+  shouldForwardProp: (prop: any) => !['fns'].includes(prop.toString()),
+})(({ theme, fns }: any) => ({
   display: `flex`,
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `column`,
   height: 'auto',
   width: '100%',
-  justifyContent: data.handleMenuItemHover ? `center` : `space-between`,
+  justifyContent: fns.handleMenuItemHover ? `center` : `space-between`,
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  backgroundColor: data.handleMenuItemHover
+  backgroundColor: fns.handleMenuItemHover
     ? theme.palette['action']['hover']
     : 'unset',
-  borderRadius: data.handleMenuItemHover ? `4px` : 'unset',
+  borderRadius: fns.handleMenuItemHover ? `4px` : 'unset',
 }));
 
 const Container: any = styled('div')({
@@ -158,14 +158,14 @@ const Secondary: any = styled('div')(({ theme }: any) => ({
 }));
 
 function MenuItem(props: MenuItemProps): JSX.Element {
-  const { data, fns } = useMenuItem();
+  const { fns } = useMenuItem();
 
   return (
     <StatePrimary
       onMouseLeave={fns.handleMenuItemHover(false)}
       onMouseEnter={fns.handleMenuItemHover(true)}
       className={props.className}
-      data={data}
+      fns={fns}
     >
       <Container>
         <LeftContent>
