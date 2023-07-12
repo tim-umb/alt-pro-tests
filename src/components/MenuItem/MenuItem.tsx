@@ -21,18 +21,18 @@ import useMenuItem from 'src/components/MenuItem/useMenuItem';
 const StatePrimary: any = styled('div', {
   shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
 })(({ theme, data }: any) => ({
+  borderRadius: `4px`,
   display: `flex`,
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `column`,
   height: 'auto',
   width: '100%',
-  justifyContent: data.isHover ? `center` : `space-between`,
+  justifyContent: `space-between`,
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
   backgroundColor: data.isHover ? theme.palette['action']['hover'] : 'unset',
-  borderRadius: data.isHover ? `4px` : 'unset',
 }));
 
 const Container: any = styled('div')({
