@@ -159,7 +159,12 @@ function MenuItem(props: MenuItemProps): JSX.Element {
   const { data, fns } = useMenuItem();
 
   return (
-    <StatePrimary className={props.className} data={data} onMouseEnter={() => fns.handleMenuItemHover()} onMouseLeave={() => fns.handleMenuItemHover()}>
+    <StatePrimary
+      onMouseLeave={fns.handleMenuItemHover}
+      onMouseEnter={fns.handleMenuItemHover}
+      className={props.className}
+      data={data}
+    >
       <Container>
         <LeftContent>
           <Icon1>
