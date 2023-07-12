@@ -185,7 +185,7 @@ function MainNav(props: MainNavProps): JSX.Element {
       className={props.className}
       mainNavState={fns.handleMainNavChange}
     >
-      <Drawer data={data}>
+      <Drawer data={data} onClick={fns.handleMainNavChange}>
         <Paper data={data}>
           <Stack>
             <LogoPlaceholder>

@@ -11,10 +11,15 @@
  *
  **********************************************************************/
 
-import React from 'react';
+import React, { useState } from 'react';
+
 const useMainNav = () => {
-  const data: any = {};
-  const handleMainNavChange = (): any => {};
+  const [isClosed, setIsClosed] = useState(false);
+  const data: any = {isClosed };
+
+  const handleMainNavChange = () => {
+    setIsClosed(!isClosed);
+  };
 
   const fns: any = { handleMainNavChange };
 
