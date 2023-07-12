@@ -15,7 +15,7 @@ import React, { useState } from 'react';
 
 const useMainNav = () => {
   const [isClosed, setIsClosed] = useState(false);
-  const data: any = {isClosed };
+  const data: any = { isClosed };
 
   const handleMainNavChange = () => {
     setIsClosed(!isClosed);
