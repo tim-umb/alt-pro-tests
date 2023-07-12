@@ -14,24 +14,16 @@
  **********************************************************************/
 
 
-
-
-
-
-
-
 export interface HeaderProps {
   className?: any;
 };
 
 
 
+
 export interface MenuItemProps {
   className?: any;
 };
-
-
-
 
 
 
@@ -43,15 +35,9 @@ export interface AppBarProps {
 
 
 
-
-
-
 export interface MainNavProps {
   className?: any;
 };
-
-
-
 
 
 
