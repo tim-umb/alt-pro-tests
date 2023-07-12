@@ -18,9 +18,7 @@ import MenuItem from 'src/components/MenuItem/MenuItem';
 import { MainNavProps } from 'src/types';
 import useMainNav from 'src/components/MainNav/useMainNav';
 
-const StateOpened: any = styled('div', {
-  shouldForwardProp: (prop: any) => !['fns'].includes(prop.toString()),
-})(({ fns }: any) => ({
+const StateOpened: any = styled('div')({
   display: `flex`,
   position: `relative`,
   isolation: `isolate`,
@@ -30,12 +28,12 @@ const StateOpened: any = styled('div', {
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  width: fns.handleMainNavChange ? `64px` : `256px`,
-}));
+  width: 'fit-content',
+});
 
 const Drawer: any = styled('div', {
-  shouldForwardProp: (prop: any) => !['fns'].includes(prop.toString()),
-})(({ fns }: any) => ({
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ data }: any) => ({
   display: `flex`,
   position: `relative`,
   isolation: `isolate`,
@@ -45,14 +43,14 @@ const Drawer: any = styled('div', {
   padding: `0px`,
   boxSizing: `border-box`,
   flex: `1`,
-  width: fns.handleMainNavChange ? 'unset' : `256px`,
+  width: data.isClosed ? 'unset' : `256px`,
   margin: `0px`,
-  alignSelf: fns.handleMainNavChange ? `stretch` : 'unset',
+  alignSelf: data.isClosed ? `stretch` : 'unset',
 }));
 
 const Paper: any = styled('div', {
-  shouldForwardProp: (prop: any) => !['fns'].includes(prop.toString()),
-})(({ theme, fns }: any) => ({
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
   backgroundColor: theme.palette['background']['paper-elevation-1'],
   boxShadow: theme.customShadows['elevation']['1'].boxShadow,
   display: `flex`,
@@ -60,8 +58,8 @@ const Paper: any = styled('div', {
   isolation: `isolate`,
   flexDirection: `column`,
   justifyContent: `flex-start`,
-  alignItems: fns.handleMainNavChange ? `flex-start` : `center`,
-  padding: fns.handleMainNavChange ? `0px` : `0px 8px`,
+  alignItems: data.isClosed ? `flex-start` : `center`,
+  padding: data.isClosed ? `0px` : `0px 8px`,
   boxSizing: `border-box`,
   alignSelf: `stretch`,
   flex: `1`,
@@ -153,50 +151,53 @@ const Typography: any = styled('div')(({ theme }: any) => ({
 }));
 
 const MenuItem1: any = styled(MenuItem, {
-  shouldForwardProp: (prop: any) => !['fns'].includes(prop.toString()),
-})(({ theme, fns }: any) => ({
-  alignSelf: fns.handleMainNavChange ? 'unset' : `stretch`,
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
+  alignSelf: data.isClosed ? 'unset' : `stretch`,
   height: `48px`,
   margin: `8px 0px 0px 0px`,
-  width: fns.handleMainNavChange ? `48px` : 'unset',
+  width: data.isClosed ? `48px` : 'unset',
 }));
 
 const MenuItem2: any = styled(MenuItem, {
-  shouldForwardProp: (prop: any) => !['fns'].includes(prop.toString()),
-})(({ theme, fns }: any) => ({
-  alignSelf: fns.handleMainNavChange ? 'unset' : `stretch`,
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
+  alignSelf: data.isClosed ? 'unset' : `stretch`,
   height: `48px`,
   margin: `8px 0px 0px 0px`,
-  width: fns.handleMainNavChange ? `48px` : 'unset',
+  width: data.isClosed ? `48px` : 'unset',
 }));
 
 const MenuItem3: any = styled(MenuItem, {
-  shouldForwardProp: (prop: any) => !['fns'].includes(prop.toString()),
-})(({ theme, fns }: any) => ({
-  alignSelf: fns.handleMainNavChange ? 'unset' : `stretch`,
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
+  alignSelf: data.isClosed ? 'unset' : `stretch`,
   height: `48px`,
   margin: `8px 0px 0px 0px`,
-  width: fns.handleMainNavChange ? `48px` : 'unset',
+  width: data.isClosed ? `48px` : 'unset',
 }));
 
 function MainNav(props: MainNavProps): JSX.Element {
-  const { fns } = useMainNav();
+  const { data, fns } = useMainNav();
 
   return (
-    <StateOpened className={props.className} fns={fns}>
-      <Drawer fns={fns}>
-        <Paper fns={fns}>
+    <StateOpened
+      className={props.className}
+      mainNavState={fns.handleMainNavChange}
+    >
+      <Drawer data={data}>
+        <Paper data={data}>
           <Stack>
             <LogoPlaceholder>
               <MinDims>
                 <MinHeight></MinHeight>
                 <MinWidth></MinWidth>
               </MinDims>
-              {!fns.handleMainNavChange && <Typography>{`LOGO`}</Typography>}
+              {!data.isClosed && <Typography>{`LOGO`}</Typography>}
             </LogoPlaceholder>
-            <MenuItem1 fns={fns} />
-            <MenuItem2 fns={fns} />
-            <MenuItem3 fns={fns} />
+            <MenuItem1 data={data} />
+            <MenuItem2 data={data} />
+            <MenuItem3 data={data} />
           </Stack>
         </Paper>
       </Drawer>
