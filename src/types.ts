@@ -20,7 +20,6 @@
 
 export interface MenuItemProps {
   className?: any;
-  isHover: any;
 };
 
 
