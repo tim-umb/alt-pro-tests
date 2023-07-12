@@ -17,41 +17,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export interface MenuItemProps {
   className?: any;
   isHover: any;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -63,32 +32,9 @@ export interface AppBarProps {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 export interface MainNavProps {
   className?: any;
 };
-
-
-
-
-
-
-
-
-
-
 
 
 
