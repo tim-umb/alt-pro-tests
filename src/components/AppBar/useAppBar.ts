@@ -13,10 +13,11 @@
 
 import React from 'react';
 const useAppBar = () => {
+  const handleViewMainNavClick = (): any => {};
   const data: any = {};
   const handleViewHeadlineClick = (): any => {};
 
-  const fns: any = { handleViewHeadlineClick };
+  const fns: any = { handleViewHeadlineClick ,handleViewMainNavClick};
 
   return { data, fns };
 };

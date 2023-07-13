@@ -27,7 +27,7 @@ const AppBar1: any = styled('div')({
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `column`,
-  width: '100%',
+  width: '100vw',
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
@@ -261,7 +261,7 @@ function AppBar(props: AppBarProps): JSX.Element {
       <Paper>
         <CustomToolbar>
           <LeftSide>
-            <IconButton onClick={fns.handleViewHeadlineClick}>
+            <IconButton onClick={fns.handleViewMainNavClick}>
               <SvgIcon
                 component={ViewHeadlineIcon}
                 htmlColor={`rgba(255, 255, 255, 1)`}
