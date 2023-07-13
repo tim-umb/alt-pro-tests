@@ -4,7 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import questTheme from 'src/DesignSystemLightTheme';
 import EntityContainer from 'src/components/EntityContainer/EntityContainer';
-import MainNav from 'src/components/MainNav/MainNav';
+import PageTemplate from 'src/components/PageTemplate/PageTemplate';
 import useMenuItem from 'src/components/MenuItem/useMenuItem';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={questTheme}>
           <Routes>
-            <Route path="/" element={<MainNav />} />
+            <Route path="/" element={<PageTemplate />} />
           </Routes>
         </ThemeProvider>
       </StyledEngineProvider>
