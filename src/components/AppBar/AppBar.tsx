@@ -27,7 +27,7 @@ const AppBar1: any = styled('div')({
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `column`,
-  width: '100vw',
+  width: '100%',
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
