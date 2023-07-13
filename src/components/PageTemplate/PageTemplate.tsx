@@ -36,7 +36,7 @@ const PageTemplate1: any = styled('div')(({ theme }: any) => ({
 }));
 
 const AppBar1: any = styled(AppBar)(({ theme }: any) => ({
-  width: `2048px`,
+  alignSelf: `stretch`,
   margin: `0px`,
 }));
 
