@@ -13,11 +13,10 @@
  **********************************************************************/
 
 import React from 'react';
-import ViewHeadlineIcon from '@mui/icons-material/ViewHeadline';
-import { SvgIcon } from '@mui/material';
-import VectorImage from 'src/assets/images/AppBar_Vector_1.png';
-import Vector1Image from 'src/assets/images/AppBar_Vector_2.png';
-import Vector2Image from 'src/assets/images/AppBar_Vector_3.png';
+import VectorImage from 'src/assets/images/AppBar_Vector.png';
+import Vector1Image from 'src/assets/images/AppBar_Vector_1.png';
+import Vector2Image from 'src/assets/images/AppBar_Vector_2.png';
+import Vector3Image from 'src/assets/images/AppBar_Vector_3.png';
 import { styled } from '@mui/material/styles';
 import { AppBarProps } from 'src/types';
 import useAppBar from 'src/components/AppBar/useAppBar';
@@ -93,6 +92,29 @@ const IconButton: any = styled('div')({
   cursor: `pointer`,
 });
 
+const ViewHeadlineFilled: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  height: `24px`,
+  width: `24px`,
+  margin: `0px`,
+  overflow: `hidden`,
+});
+
+const Vector: any = styled('img')({
+  height: `14px`,
+  width: `16px`,
+  position: `absolute`,
+  left: `4px`,
+  top: `5px`,
+});
+
 const Title: any = styled('div')(({ theme }: any) => ({
   textAlign: `left`,
   whiteSpace: `pre-wrap`,
@@ -148,7 +170,7 @@ const HistoryOutlined: any = styled('div')({
   overflow: `hidden`,
 });
 
-const Vector: any = styled('img')({
+const Vector1: any = styled('img')({
   height: `15px`,
   width: `17.5px`,
   position: `absolute`,
@@ -183,7 +205,7 @@ const NotificationsOutline: any = styled('div')({
   overflow: `hidden`,
 });
 
-const Vector1: any = styled('img')({
+const Vector2: any = styled('img')({
   height: `16.25px`,
   width: `13.33px`,
   position: `absolute`,
@@ -233,7 +255,7 @@ const Group: any = styled('div')({
   top: `3px`,
 });
 
-const Vector2: any = styled('img')({
+const Vector3: any = styled('img')({
   height: `15px`,
   width: `15px`,
   position: `absolute`,
@@ -262,28 +284,27 @@ function AppBar(props: AppBarProps): JSX.Element {
         <CustomToolbar>
           <LeftSide>
             <IconButton onClick={fns.handleViewMainNavClick}>
-              <SvgIcon
-                component={ViewHeadlineIcon}
-                htmlColor={`rgba(255, 255, 255, 1)`}
-              ></SvgIcon>
+              <ViewHeadlineFilled>
+                <Vector src={VectorImage} loading="lazy" alt={'Vector'} />
+              </ViewHeadlineFilled>
             </IconButton>
             <Title>{`Title`}</Title>
           </LeftSide>
           <Stack>
             <Icon1>
               <HistoryOutlined>
-                <Vector src={VectorImage} loading="lazy" alt={'Vector'} />
+                <Vector1 src={Vector1Image} loading="lazy" alt={'Vector'} />
               </HistoryOutlined>
             </Icon1>
             <Icon2>
               <NotificationsOutline>
-                <Vector1 src={Vector1Image} loading="lazy" alt={'Vector'} />
+                <Vector2 src={Vector2Image} loading="lazy" alt={'Vector'} />
               </NotificationsOutline>
             </Icon2>
             <Icon3>
               <LogoutOutlined>
                 <Group>
-                  <Vector2 src={Vector2Image} loading="lazy" alt={'Vector'} />
+                  <Vector3 src={Vector3Image} loading="lazy" alt={'Vector'} />
                 </Group>
               </LogoutOutlined>
             </Icon3>
