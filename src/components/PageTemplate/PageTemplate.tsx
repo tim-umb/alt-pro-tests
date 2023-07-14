@@ -26,7 +26,7 @@ const PageTemplate1: any = styled('div')(({ theme }: any) => ({
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `row`,
-  width: '100%',
+  width: '100vw',
   height: '100vh',
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
