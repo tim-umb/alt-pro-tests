@@ -40,9 +40,11 @@
 
 
 
+
 export interface MainNavProps {
   className?: any;
 };
+
 
 
 
@@ -106,9 +108,11 @@ export interface AppBarProps {
 
 
 
+
 export interface PageTemplatePrototypeProps {
   className?: any;
 };
+
 
 
 
@@ -149,9 +153,11 @@ export interface PageTemplateProps {
 
 
 
+
 export interface HeaderProps {
   className?: any;
 };
+
 
 
 
@@ -215,9 +221,11 @@ export interface MenuItemProps {
 
 
 
+
 export interface EntityContainerProps {
   className?: any;
 }
+
 
 
 
@@ -327,9 +335,11 @@ export interface EntityProfileProps {
 
 
 
+
 export interface EntityFormProps {
   className?: any;
 };
+
 
 
 

@@ -13,7 +13,6 @@
  **********************************************************************/
 
 import React from 'react';
-import { Divider } from '@mui/material';
 import VectorImage from 'src/assets/images/MainNav_Vector.png';
 import Vector1Image from 'src/assets/images/MainNav_Vector_1.png';
 import { styled } from '@mui/material/styles';
@@ -186,7 +185,7 @@ const Paper: any = styled('div', {
   shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
 })(({ theme, data }: any) => ({
   backgroundColor: theme.palette['background']['paper-elevation-1'],
-  border: data.isClosed ? 'unset' : `1px solid rgba(0, 0, 0, 0.12)`,
+  border: `1px solid rgba(0, 0, 0, 0.12)`,
   boxSizing: `border-box`,
   display: `flex`,
   position: `relative`,
@@ -194,7 +193,7 @@ const Paper: any = styled('div', {
   flexDirection: data.isClosed ? `column` : `row`,
   justifyContent: data.isClosed ? `flex-start` : `center`,
   alignItems: `flex-start`,
-  padding: data.isClosed ? `0px` : `0px 8px`,
+  padding: `0px 8px`,
   alignSelf: `stretch`,
   flex: `1`,
   margin: `0px`,
@@ -287,36 +286,22 @@ const Typography: any = styled('div')(({ theme }: any) => ({
   top: `28px`,
 }));
 
-const MenuItem1: any = styled(MenuItem, {
-  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
-})(({ theme, data }: any) => ({
-  alignSelf: data.isClosed ? 'unset' : `stretch`,
-  height: `48px`,
-  margin: `8px 0px 0px 0px`,
-  width: data.isClosed ? `48px` : 'unset',
-}));
-
-const MenuItem2: any = styled(MenuItem, {
-  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
-})(({ theme, data }: any) => ({
-  alignSelf: data.isClosed ? 'unset' : `stretch`,
-  height: `48px`,
-  margin: `8px 0px 0px 0px`,
-  width: data.isClosed ? `48px` : 'unset',
-}));
-
-const MenuItem3: any = styled(MenuItem, {
-  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
-})(({ theme, data }: any) => ({
-  alignSelf: data.isClosed ? 'unset' : `stretch`,
-  height: `48px`,
-  margin: `8px 0px 0px 0px`,
-  width: data.isClosed ? `48px` : 'unset',
-}));
-
-const DividerVertical: any = styled(Divider)(({ theme }: any) => ({
+const MenuItem1: any = styled(MenuItem)(({ theme }: any) => ({
   alignSelf: `stretch`,
-  margin: `0px`,
+  height: `48px`,
+  margin: `8px 0px 0px 0px`,
+}));
+
+const MenuItem2: any = styled(MenuItem)(({ theme }: any) => ({
+  alignSelf: `stretch`,
+  height: `48px`,
+  margin: `8px 0px 0px 0px`,
+}));
+
+const MenuItem3: any = styled(MenuItem)(({ theme }: any) => ({
+  alignSelf: `stretch`,
+  height: `48px`,
+  margin: `8px 0px 0px 0px`,
 }));
 
 function MainNav(props: MainNavProps): JSX.Element {
@@ -358,12 +343,11 @@ function MainNav(props: MainNavProps): JSX.Element {
                 </MinDims>
                 {!data.isClosed && <Typography>{`LOGO`}</Typography>}
               </LogoPlaceholder>
-              <MenuItem1 data={data} />
-              <MenuItem2 data={data} />
-              <MenuItem3 data={data} />
+              <MenuItem1 />
+              <MenuItem2 />
+              <MenuItem3 />
             </Stack>
           </Paper>
-          {data.isClosed && <DividerVertical orientation="vertical" />}
         </Frame16>
       </Drawer>
     </StateOpened>
