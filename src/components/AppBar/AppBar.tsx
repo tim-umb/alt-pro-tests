@@ -13,7 +13,6 @@
  **********************************************************************/
 
 import React from 'react';
-import { Divider } from '@mui/material';
 import VectorImage from 'src/assets/images/AppBar_Vector.png';
 import Vector1Image from 'src/assets/images/AppBar_Vector_1.png';
 import Vector2Image from 'src/assets/images/AppBar_Vector_2.png';
@@ -35,7 +34,6 @@ const AppBar1: any = styled('div')({
 
 const Paper: any = styled('div')(({ theme }: any) => ({
   backgroundColor: theme.palette['primary']['main'],
-  boxShadow: theme.customShadows['elevation']['4'].boxShadow,
   display: `flex`,
   position: `relative`,
   isolation: `isolate`,
@@ -236,11 +234,6 @@ const MinHeight: any = styled('div')({
   margin: `0px`,
 });
 
-const DividerHorizontal: any = styled(Divider)(({ theme }: any) => ({
-  alignSelf: `stretch`,
-  margin: `0px`,
-}));
-
 function AppBar(props: AppBarProps): JSX.Element {
   return (
     <AppBar1 className={props.className}>
@@ -271,7 +264,6 @@ function AppBar(props: AppBarProps): JSX.Element {
           <MinHeight></MinHeight>
         </CustomToolbar>
       </Paper>
-      <DividerHorizontal orientation="horizontal" />
     </AppBar1>
   );
 }
