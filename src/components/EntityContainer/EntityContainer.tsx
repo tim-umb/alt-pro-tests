@@ -35,7 +35,6 @@ const StateOpen: any = styled('div')(({ theme }: any) => ({
   padding: `0px`,
   boxSizing: `border-box`,
   overflow: `hidden`,
-  maxWidth: '1400px',
 }));
 
 const Content: any = styled('div')({

@@ -45,37 +45,6 @@
 
 
 
-export interface PageTemplateProps {
-  className?: any;
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export interface EntityContainerProps {
   className?: any;
@@ -138,9 +107,44 @@ export interface EntityContainerProps {
 
 
 
+
+export interface PageTemplateProps {
+  className?: any;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export interface MainNavProps {
   className?: any;
 };
+
 
 
 
@@ -214,9 +218,11 @@ export interface AppBarProps {
 
 
 
+
 export interface PageTemplatePrototypeProps {
   className?: any;
 };
+
 
 
 
@@ -273,9 +279,11 @@ export interface HeaderProps {
 
 
 
+
 export interface MenuItemProps {
   className?: any;
 };
+
 
 
 
@@ -372,9 +380,11 @@ export interface EntityProfileProps {
 
 
 
+
 export interface EntityFormProps {
   className?: any;
 };
+
 
 
 
