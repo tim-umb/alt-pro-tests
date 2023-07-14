@@ -25,12 +25,12 @@ const StateNavOpened: any = styled('div')({
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `column`,
+  width: '100vw',
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  height: '100vh',
-  width: '100vw',
+  height: 'auto',
 });
 
 const PageTemplate: any = styled('div')(({ theme }: any) => ({
@@ -43,8 +43,8 @@ const PageTemplate: any = styled('div')(({ theme }: any) => ({
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
+  alignSelf: `stretch`,
   height: `1080px`,
-  width: `2048px`,
   margin: `0px`,
 }));
 
@@ -52,21 +52,6 @@ const MainNav1: any = styled(MainNav)(({ theme }: any) => ({
   alignSelf: `stretch`,
   margin: `0px`,
 }));
-
-const PageContainer: any = styled('div')({
-  display: `flex`,
-  position: `relative`,
-  isolation: `isolate`,
-  flexDirection: `row`,
-  justifyContent: `flex-start`,
-  alignItems: `flex-start`,
-  padding: `0px`,
-  boxSizing: `border-box`,
-  alignSelf: `stretch`,
-  flex: `1`,
-  margin: `0px`,
-  overflow: `hidden`,
-});
 
 const Box1: any = styled('div')({
   display: `flex`,
@@ -97,9 +82,9 @@ const Content: any = styled('div')({
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `column`,
-  justifyContent: `center`,
+  justifyContent: `flex-start`,
   alignItems: `center`,
-  padding: `0px`,
+  padding: `64px 64px 0px 64px`,
   boxSizing: `border-box`,
   alignSelf: `stretch`,
   flex: `1`,
@@ -107,8 +92,8 @@ const Content: any = styled('div')({
 });
 
 const EntityContainer1: any = styled(EntityContainer)(({ theme }: any) => ({
+  alignSelf: `stretch`,
   height: `709px`,
-  width: `1400px`,
   margin: `0px`,
 }));
 
@@ -117,15 +102,13 @@ function PageTemplatePrototype(props: PageTemplatePrototypeProps): JSX.Element {
     <StateNavOpened className={props.className}>
       <PageTemplate>
         <MainNav1 />
-        <PageContainer>
-          <Box1>
-            <AppBar1 />
-            <Header1 />
-            <Content>
-              <EntityContainer1 />
-            </Content>
-          </Box1>
-        </PageContainer>
+        <Box1>
+          <AppBar1 />
+          <Header1 />
+          <Content>
+            <EntityContainer1 />
+          </Content>
+        </Box1>
       </PageTemplate>
     </StateNavOpened>
   );
