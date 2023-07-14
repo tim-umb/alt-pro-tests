@@ -31,7 +31,6 @@ const StateOpened: any = styled('div')({
   padding: `0px`,
   boxSizing: `border-box`,
   width: 'fit-content',
-  maxWidth: '64px',
 });
 
 const Drawer: any = styled('div', {
