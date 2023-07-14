@@ -26,7 +26,7 @@ const PageTemplate1: any = styled('div')(({ theme }: any) => ({
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `row`,
-  width: '100vw',
+  width: '100%',
   height: '100vh',
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
@@ -84,9 +84,9 @@ const Content: any = styled('div')({
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `column`,
-  justifyContent: `center`,
+  justifyContent: `flex-start`,
   alignItems: `center`,
-  padding: `0px`,
+  padding: `64px`,
   boxSizing: `border-box`,
   alignSelf: `stretch`,
   flex: `1`,
@@ -94,8 +94,8 @@ const Content: any = styled('div')({
 });
 
 const EntityContainer1: any = styled(EntityContainer)(({ theme }: any) => ({
+  alignSelf: `stretch`,
   height: `709px`,
-  width: `1400px`,
   margin: `0px`,
 }));
 
