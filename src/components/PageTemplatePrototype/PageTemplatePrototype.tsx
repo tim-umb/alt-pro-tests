@@ -19,6 +19,7 @@ import AppBar from 'src/components/AppBar/AppBar';
 import Header from 'src/components/Header/Header';
 import EntityContainer from 'src/components/EntityContainer/EntityContainer';
 import { PageTemplatePrototypeProps } from 'src/types';
+import usePageTemplatePrototype from 'src/components/PageTemplatePrototype/usePageTemplatePrototype';
 
 const StateNavOpened: any = styled('div')({
   display: `flex`,
@@ -30,7 +31,7 @@ const StateNavOpened: any = styled('div')({
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  height: 'auto',
+  height: '100vh',
 });
 
 const PageTemplate: any = styled('div')(({ theme }: any) => ({
@@ -77,19 +78,21 @@ const Header1: any = styled(Header)(({ theme }: any) => ({
   margin: `0px`,
 }));
 
-const Content: any = styled('div')({
+const Content: any = styled('div', {
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ data }: any) => ({
   display: `flex`,
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `column`,
   justifyContent: `flex-start`,
   alignItems: `center`,
-  padding: `64px 64px 0px 64px`,
+  padding: data.isClosed ? `64px` : `64px 64px 0px 64px`,
   boxSizing: `border-box`,
   alignSelf: `stretch`,
   flex: `1`,
   margin: `0px`,
-});
+}));
 
 const EntityContainer1: any = styled(EntityContainer)(({ theme }: any) => ({
   alignSelf: `stretch`,
@@ -98,6 +101,8 @@ const EntityContainer1: any = styled(EntityContainer)(({ theme }: any) => ({
 }));
 
 function PageTemplatePrototype(props: PageTemplatePrototypeProps): JSX.Element {
+  const { data } = usePageTemplatePrototype();
+
   return (
     <StateNavOpened className={props.className}>
       <PageTemplate>
@@ -105,7 +110,7 @@ function PageTemplatePrototype(props: PageTemplatePrototypeProps): JSX.Element {
         <Box1>
           <AppBar1 />
           <Header1 />
-          <Content>
+          <Content data={data}>
             <EntityContainer1 />
           </Content>
         </Box1>
