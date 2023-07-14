@@ -14,6 +14,7 @@
 import React, { useState } from 'react';
 
 const useMainNav = () => {
+  const handleIconButtonHover = (): any => {};
   const [isClosed, setIsClosed] = useState(false);
   const data: any = { isClosed };
 
@@ -21,7 +22,7 @@ const useMainNav = () => {
     setIsClosed(!isClosed);
   };
 
-  const fns: any = { handleMainNavChange };
+  const fns: any = { handleMainNavChange ,handleIconButtonHover};
 
   return { data, fns };
 };

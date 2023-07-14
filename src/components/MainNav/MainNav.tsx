@@ -317,14 +317,15 @@ function MainNav(props: MainNavProps): JSX.Element {
   const { data, fns } = useMainNav();
 
   return (
-    <StateOpened
-      className={props.className}
-      mainNavState={fns.handleMainNavChange}
-    >
+    <StateOpened className={props.className}>
       <Drawer onClick={fns.handleMainNavChange} data={data}>
         <Frame14 data={data}>
           {!data.isClosed && (
-            <IconButton>
+            <IconButton
+              onMouseLeave={fns.handleIconButtonHover}
+              onMouseEnter={fns.handleIconButtonHover}
+              mainNavState={fns.handleMainNavChange}
+            >
               <Icon1>
                 <ChevronLeftFilled>
                   <Vector src={VectorImage} loading="lazy" alt={'Vector'} />
@@ -333,7 +334,11 @@ function MainNav(props: MainNavProps): JSX.Element {
             </IconButton>
           )}
           {data.isClosed && (
-            <IconButton1>
+            <IconButton1
+              onMouseLeave={fns.handleIconButtonHover}
+              onMouseEnter={fns.handleIconButtonHover}
+              mainNavState={fns.handleMainNavChange}
+            >
               <Icon2>
                 <MenuFilled>
                   <Vector1 src={Vector1Image} loading="lazy" alt={'Vector'} />
