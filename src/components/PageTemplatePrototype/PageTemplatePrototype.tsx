@@ -29,8 +29,8 @@ const StateNavOpened: any = styled('div')({
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  height: 'auto',
-  width: 'fit-content',
+  height: '100vh',
+  width: '100vw',
 });
 
 const PageTemplate: any = styled('div')(({ theme }: any) => ({
