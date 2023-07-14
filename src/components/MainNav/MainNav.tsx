@@ -15,6 +15,7 @@
 import React from 'react';
 import { Divider } from '@mui/material';
 import VectorImage from 'src/assets/images/MainNav_Vector.png';
+import Vector1Image from 'src/assets/images/MainNav_Vector_1.png';
 import { styled } from '@mui/material/styles';
 import MenuItem from 'src/components/MenuItem/MenuItem';
 import { MainNavProps } from 'src/types';
@@ -56,6 +57,8 @@ const Frame14: any = styled('div', {
   backgroundColor: data.isClosed
     ? theme.palette['primary']['main']
     : theme.palette['background']['paper-elevation-1'],
+  border: data.isClosed ? 'unset' : `1px solid rgba(0, 0, 0, 0.12)`,
+  boxSizing: `border-box`,
   display: `flex`,
   position: `relative`,
   isolation: `isolate`,
@@ -63,7 +66,6 @@ const Frame14: any = styled('div', {
   justifyContent: `flex-start`,
   alignItems: data.isClosed ? `center` : `flex-end`,
   padding: `0px`,
-  boxSizing: `border-box`,
   alignSelf: `stretch`,
   margin: `0px`,
 }));
@@ -87,56 +89,83 @@ const Icon1: any = styled('div')({
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `row`,
-  justifyContent: `flex-start`,
-  alignItems: `flex-start`,
+  justifyContent: `center`,
+  alignItems: `center`,
   padding: `0px`,
   boxSizing: `border-box`,
-  height: `24px`,
-  width: `24px`,
   margin: `0px`,
-  overflow: `hidden`,
 });
 
-const Vector: any = styled('img', {
-  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
-})(({ data }: any) => ({
-  height: `12px`,
-  width: data.isClosed ? `18px` : `7.41px`,
-  position: `absolute`,
-  left: data.isClosed ? `3px` : `8px`,
-  top: `6px`,
-}));
-
-const DividerHorizontal: any = styled('div', {
-  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
-})(({ data }: any) => ({
-  border: data.isClosed
-    ? `1px solid rgba(0, 60, 110, 1)`
-    : `1px solid rgba(0, 0, 0, 0.12)`,
-  boxSizing: `border-box`,
-  display: `flex`,
-  position: `relative`,
-  isolation: `isolate`,
-  flexDirection: `column`,
-  justifyContent: `flex-start`,
-  alignItems: `flex-start`,
-  padding: `0px`,
-  height: `1px`,
-  width: data.isClosed ? `64px` : `256px`,
-  margin: `0px`,
-}));
-
-const MinHeight: any = styled('div')({
+const ChevronLeftFilled: any = styled('div')({
   display: `flex`,
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `row`,
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
-  height: `1px`,
-  width: `0px`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  width: `24px`,
+  height: `24px`,
   margin: `0px`,
   overflow: `hidden`,
+});
+
+const Vector: any = styled('img')({
+  height: `12px`,
+  width: `7.41px`,
+  position: `absolute`,
+  left: `8px`,
+  top: `6px`,
+});
+
+const IconButton1: any = styled('div')({
+  borderRadius: `100px`,
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `column`,
+  justifyContent: `center`,
+  alignItems: `center`,
+  padding: `12px`,
+  boxSizing: `border-box`,
+  margin: `0px`,
+  overflow: `hidden`,
+});
+
+const Icon2: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  margin: `0px`,
+});
+
+const MenuFilled: any = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  width: `24px`,
+  height: `24px`,
+  margin: `0px`,
+  overflow: `hidden`,
+});
+
+const Vector1: any = styled('img')({
+  height: `12px`,
+  width: `18px`,
+  position: `absolute`,
+  left: `3px`,
+  top: `6px`,
 });
 
 const Frame16: any = styled('div')({
@@ -157,6 +186,8 @@ const Paper: any = styled('div', {
   shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
 })(({ theme, data }: any) => ({
   backgroundColor: theme.palette['background']['paper-elevation-1'],
+  border: data.isClosed ? 'unset' : `1px solid rgba(0, 0, 0, 0.12)`,
+  boxSizing: `border-box`,
   display: `flex`,
   position: `relative`,
   isolation: `isolate`,
@@ -164,7 +195,6 @@ const Paper: any = styled('div', {
   justifyContent: data.isClosed ? `flex-start` : `center`,
   alignItems: `flex-start`,
   padding: data.isClosed ? `0px` : `0px 8px`,
-  boxSizing: `border-box`,
   alignSelf: `stretch`,
   flex: `1`,
   margin: `0px`,
@@ -211,7 +241,7 @@ const MinDims: any = styled('div')({
   margin: `0px`,
 });
 
-const MinHeight1: any = styled('div')({
+const MinHeight: any = styled('div')({
   display: `flex`,
   position: `relative`,
   isolation: `isolate`,
@@ -299,26 +329,31 @@ function MainNav(props: MainNavProps): JSX.Element {
     >
       <Drawer onClick={fns.handleMainNavChange} data={data}>
         <Frame14 data={data}>
-          <IconButton>
-            <Icon1>
-              <Vector
-                data={data}
-                src={VectorImage}
-                loading="lazy"
-                alt={'Vector'}
-              />
-            </Icon1>
-          </IconButton>
-          <DividerHorizontal data={data}>
-            <MinHeight></MinHeight>
-          </DividerHorizontal>
+          {!data.isClosed && (
+            <IconButton>
+              <Icon1>
+                <ChevronLeftFilled>
+                  <Vector src={VectorImage} loading="lazy" alt={'Vector'} />
+                </ChevronLeftFilled>
+              </Icon1>
+            </IconButton>
+          )}
+          {data.isClosed && (
+            <IconButton1>
+              <Icon2>
+                <MenuFilled>
+                  <Vector1 src={Vector1Image} loading="lazy" alt={'Vector'} />
+                </MenuFilled>
+              </Icon2>
+            </IconButton1>
+          )}
         </Frame14>
         <Frame16>
           <Paper data={data}>
             <Stack data={data}>
               <LogoPlaceholder>
                 <MinDims>
-                  <MinHeight1></MinHeight1>
+                  <MinHeight></MinHeight>
                   <MinWidth></MinWidth>
                 </MinDims>
                 {!data.isClosed && <Typography>{`LOGO`}</Typography>}
@@ -328,7 +363,7 @@ function MainNav(props: MainNavProps): JSX.Element {
               <MenuItem3 data={data} />
             </Stack>
           </Paper>
-          <DividerVertical orientation="vertical" />
+          {data.isClosed && <DividerVertical orientation="vertical" />}
         </Frame16>
       </Drawer>
     </StateOpened>
