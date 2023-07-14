@@ -15,8 +15,8 @@
 import React from 'react';
 import { Divider } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import AppBar from 'src/components/AppBar/AppBar';
 import MainNav from 'src/components/MainNav/MainNav';
+import AppBar from 'src/components/AppBar/AppBar';
 import Header from 'src/components/Header/Header';
 import EntityContainer from 'src/components/EntityContainer/EntityContainer';
 import { PageTemplateProps } from 'src/types';
@@ -26,17 +26,18 @@ const PageTemplate1: any = styled('div')(({ theme }: any) => ({
   display: `flex`,
   position: `relative`,
   isolation: `isolate`,
-  flexDirection: `column`,
+  flexDirection: `row`,
+  width: '100%',
   height: '100vh',
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  width: '100vw',
 }));
 
-const AppBar1: any = styled(AppBar)(({ theme }: any) => ({
+const MainNav1: any = styled(MainNav)(({ theme }: any) => ({
   alignSelf: `stretch`,
+  width: `256px`,
   margin: `0px`,
 }));
 
@@ -49,21 +50,12 @@ const PageContainer: any = styled('div')({
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
+  alignSelf: `stretch`,
   flex: `1`,
-  width: '100%',
   margin: `0px`,
   overflow: `hidden`,
+  width: '100%',
 });
-
-const MainNav1: any = styled(MainNav)(({ theme }: any) => ({
-  height: `1032px`,
-  margin: `0px`,
-}));
-
-const DividerVertical: any = styled(Divider)(({ theme }: any) => ({
-  alignSelf: `stretch`,
-  margin: `0px`,
-}));
 
 const Box1: any = styled('div')({
   display: `flex`,
@@ -78,6 +70,11 @@ const Box1: any = styled('div')({
   flex: `1`,
   margin: `0px`,
 });
+
+const AppBar1: any = styled(AppBar)(({ theme }: any) => ({
+  alignSelf: `stretch`,
+  margin: `0px`,
+}));
 
 const Header1: any = styled(Header)(({ theme }: any) => ({
   alignSelf: `stretch`,
@@ -112,11 +109,10 @@ const EntityContainer1: any = styled(EntityContainer)(({ theme }: any) => ({
 function PageTemplate(props: PageTemplateProps): JSX.Element {
   return (
     <PageTemplate1 className={props.className}>
-      <AppBar1 />
+      <MainNav1 />
       <PageContainer>
-        <MainNav1 />
-        <DividerVertical orientation="vertical" />
         <Box1>
+          <AppBar1 />
           <Header1 />
           <DividerHorizontal orientation="horizontal" />
           <Content>
