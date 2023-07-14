@@ -286,22 +286,31 @@ const Typography: any = styled('div')(({ theme }: any) => ({
   top: `28px`,
 }));
 
-const MenuItem1: any = styled(MenuItem)(({ theme }: any) => ({
-  alignSelf: `stretch`,
+const MenuItem1: any = styled(MenuItem, {
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
+  alignSelf: data.isClosed ? 'unset' : `stretch`,
   height: `48px`,
   margin: `8px 0px 0px 0px`,
+  width: data.isClosed ? `48px` : 'unset',
 }));
 
-const MenuItem2: any = styled(MenuItem)(({ theme }: any) => ({
-  alignSelf: `stretch`,
+const MenuItem2: any = styled(MenuItem, {
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
+  alignSelf: data.isClosed ? 'unset' : `stretch`,
   height: `48px`,
   margin: `8px 0px 0px 0px`,
+  width: data.isClosed ? `48px` : 'unset',
 }));
 
-const MenuItem3: any = styled(MenuItem)(({ theme }: any) => ({
-  alignSelf: `stretch`,
+const MenuItem3: any = styled(MenuItem, {
+  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
+})(({ theme, data }: any) => ({
+  alignSelf: data.isClosed ? 'unset' : `stretch`,
   height: `48px`,
   margin: `8px 0px 0px 0px`,
+  width: data.isClosed ? `48px` : 'unset',
 }));
 
 function MainNav(props: MainNavProps): JSX.Element {
@@ -343,9 +352,9 @@ function MainNav(props: MainNavProps): JSX.Element {
                 </MinDims>
                 {!data.isClosed && <Typography>{`LOGO`}</Typography>}
               </LogoPlaceholder>
-              <MenuItem1 />
-              <MenuItem2 />
-              <MenuItem3 />
+              <MenuItem1 data={data} />
+              <MenuItem2 data={data} />
+              <MenuItem3 data={data} />
             </Stack>
           </Paper>
         </Frame16>
