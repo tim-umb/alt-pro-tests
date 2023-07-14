@@ -14,15 +14,20 @@
 import React, { useState } from 'react';
 
 const useMainNav = () => {
-  const handleIconButtonHover = (): any => {};
+
   const [isClosed, setIsClosed] = useState(false);
-  const data: any = { isClosed };
+  const [isHover, setIsHover] = useState(false);
+  const data: any = { isClosed, isHover };
 
   const handleMainNavChange = () => {
     setIsClosed(!isClosed);
   };
 
-  const fns: any = { handleMainNavChange ,handleIconButtonHover};
+  const handleIconButtonHover = () => {
+    setIsHover(!isHover);
+  };
+
+  const fns: any = { handleMainNavChange, handleIconButtonHover};
 
   return { data, fns };
 };
