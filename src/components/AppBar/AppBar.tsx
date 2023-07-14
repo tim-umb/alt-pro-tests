@@ -13,13 +13,12 @@
  **********************************************************************/
 
 import React from 'react';
+import { Divider } from '@mui/material';
 import VectorImage from 'src/assets/images/AppBar_Vector.png';
 import Vector1Image from 'src/assets/images/AppBar_Vector_1.png';
 import Vector2Image from 'src/assets/images/AppBar_Vector_2.png';
-import Vector3Image from 'src/assets/images/AppBar_Vector_3.png';
 import { styled } from '@mui/material/styles';
 import { AppBarProps } from 'src/types';
-import useAppBar from 'src/components/AppBar/useAppBar';
 
 const AppBar1: any = styled('div')({
   display: `flex`,
@@ -77,44 +76,6 @@ const LeftSide: any = styled('div')({
   margin: `0px`,
 });
 
-const IconButton: any = styled('div')({
-  borderRadius: `100px`,
-  display: `flex`,
-  position: `relative`,
-  isolation: `isolate`,
-  flexDirection: `column`,
-  justifyContent: `center`,
-  alignItems: `center`,
-  padding: `12px`,
-  boxSizing: `border-box`,
-  margin: `0px`,
-  overflow: `hidden`,
-  cursor: `pointer`,
-});
-
-const ViewHeadlineFilled: any = styled('div')({
-  display: `flex`,
-  position: `relative`,
-  isolation: `isolate`,
-  flexDirection: `row`,
-  justifyContent: `flex-start`,
-  alignItems: `flex-start`,
-  padding: `0px`,
-  boxSizing: `border-box`,
-  height: `24px`,
-  width: `24px`,
-  margin: `0px`,
-  overflow: `hidden`,
-});
-
-const Vector: any = styled('img')({
-  height: `14px`,
-  width: `16px`,
-  position: `absolute`,
-  left: `4px`,
-  top: `5px`,
-});
-
 const Title: any = styled('div')(({ theme }: any) => ({
   textAlign: `left`,
   whiteSpace: `pre-wrap`,
@@ -128,7 +89,7 @@ const Title: any = styled('div')(({ theme }: any) => ({
   textDecoration: `none`,
   lineHeight: `116.70000553131104%`,
   textTransform: `none`,
-  margin: `0px 0px 0px 16px`,
+  margin: `0px`,
 }));
 
 const Stack: any = styled('div')({
@@ -170,7 +131,7 @@ const HistoryOutlined: any = styled('div')({
   overflow: `hidden`,
 });
 
-const Vector1: any = styled('img')({
+const Vector: any = styled('img')({
   height: `15px`,
   width: `17.5px`,
   position: `absolute`,
@@ -205,7 +166,7 @@ const NotificationsOutline: any = styled('div')({
   overflow: `hidden`,
 });
 
-const Vector2: any = styled('img')({
+const Vector1: any = styled('img')({
   height: `16.25px`,
   width: `13.33px`,
   position: `absolute`,
@@ -255,7 +216,7 @@ const Group: any = styled('div')({
   top: `3px`,
 });
 
-const Vector3: any = styled('img')({
+const Vector2: any = styled('img')({
   height: `15px`,
   width: `15px`,
   position: `absolute`,
@@ -275,36 +236,34 @@ const MinHeight: any = styled('div')({
   margin: `0px`,
 });
 
-function AppBar(props: AppBarProps): JSX.Element {
-  const { fns } = useAppBar();
+const DividerHorizontal: any = styled(Divider)(({ theme }: any) => ({
+  alignSelf: `stretch`,
+  margin: `0px`,
+}));
 
+function AppBar(props: AppBarProps): JSX.Element {
   return (
     <AppBar1 className={props.className}>
       <Paper>
         <CustomToolbar>
           <LeftSide>
-            <IconButton onClick={fns.handleViewMainNavClick}>
-              <ViewHeadlineFilled>
-                <Vector src={VectorImage} loading="lazy" alt={'Vector'} />
-              </ViewHeadlineFilled>
-            </IconButton>
             <Title>{`Title`}</Title>
           </LeftSide>
           <Stack>
             <Icon1>
               <HistoryOutlined>
-                <Vector1 src={Vector1Image} loading="lazy" alt={'Vector'} />
+                <Vector src={VectorImage} loading="lazy" alt={'Vector'} />
               </HistoryOutlined>
             </Icon1>
             <Icon2>
               <NotificationsOutline>
-                <Vector2 src={Vector2Image} loading="lazy" alt={'Vector'} />
+                <Vector1 src={Vector1Image} loading="lazy" alt={'Vector'} />
               </NotificationsOutline>
             </Icon2>
             <Icon3>
               <LogoutOutlined>
                 <Group>
-                  <Vector3 src={Vector3Image} loading="lazy" alt={'Vector'} />
+                  <Vector2 src={Vector2Image} loading="lazy" alt={'Vector'} />
                 </Group>
               </LogoutOutlined>
             </Icon3>
@@ -312,6 +271,7 @@ function AppBar(props: AppBarProps): JSX.Element {
           <MinHeight></MinHeight>
         </CustomToolbar>
       </Paper>
+      <DividerHorizontal orientation="horizontal" />
     </AppBar1>
   );
 }
