@@ -18,20 +18,18 @@ import MenuItem from 'src/components/MenuItem/MenuItem';
 import { MainNavProps } from 'src/types';
 import useMainNav from 'src/components/MainNav/useMainNav';
 
-const StateOpened: any = styled('div', {
-  shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
-})(({ data }: any) => ({
+const StateOpened: any = styled('div')({
   display: `flex`,
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `column`,
-  height: '100vh',
+  height: '100%',
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `0px`,
   boxSizing: `border-box`,
-  width: data.isClosed ? `64px` : `256px`,
-}));
+  width: 'fit-content',
+});
 
 const Drawer: any = styled('div', {
   shouldForwardProp: (prop: any) => !['data'].includes(prop.toString()),
@@ -186,10 +184,9 @@ function MainNav(props: MainNavProps): JSX.Element {
   return (
     <StateOpened
       className={props.className}
-      data={data}
       mainNavState={fns.handleMainNavChange}
     >
-      <Drawer data={data} onClick={fns.handleMainNavChange}>
+      <Drawer onClick={fns.handleMainNavChange} data={data}>
         <Paper data={data}>
           <Stack>
             <LogoPlaceholder>
