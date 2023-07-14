@@ -13,7 +13,6 @@
  **********************************************************************/
 
 import React from 'react';
-import { Divider } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MainNav from 'src/components/MainNav/MainNav';
 import AppBar from 'src/components/AppBar/AppBar';
@@ -37,7 +36,6 @@ const PageTemplate1: any = styled('div')(({ theme }: any) => ({
 
 const MainNav1: any = styled(MainNav)(({ theme }: any) => ({
   alignSelf: `stretch`,
-  width: `256px`,
   margin: `0px`,
 }));
 
@@ -81,11 +79,6 @@ const Header1: any = styled(Header)(({ theme }: any) => ({
   margin: `0px`,
 }));
 
-const DividerHorizontal: any = styled(Divider)(({ theme }: any) => ({
-  alignSelf: `stretch`,
-  margin: `0px`,
-}));
-
 const Content: any = styled('div')({
   display: `flex`,
   position: `relative`,
@@ -114,7 +107,6 @@ function PageTemplate(props: PageTemplateProps): JSX.Element {
         <Box1>
           <AppBar1 />
           <Header1 />
-          <DividerHorizontal orientation="horizontal" />
           <Content>
             <EntityContainer1 />
           </Content>
